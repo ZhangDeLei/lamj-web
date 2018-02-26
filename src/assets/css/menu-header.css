@@ -1,0 +1,38 @@
+/*============后台模板==============*/
+.navbar-mystyle{background-color:#373d41; color:#FFF;-webkit-font-smoothing: antialiased;}
+.mystyle-brand{ background-color:#373d41; display:block;border-right: solid 1px #2a2f32;}
+.mystyle-brand:hover{background-color: #2a2f32}
+/*导航栏样式变更*/
+.navbar-mystyle .navbar-nav li .mystyle-color:hover{ background-color:#373d41; color:#FFF;}
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-nav>li>a:focus{color:#FFF;}
+.navbar-default .navbar-brand{color:#FFF;}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{ background-color:#2a2f32; color:#fff;}
+.navbar-default .navbar-brand:hover{color:#FFF;}
+.navbar-default .dropdown-menu{ width:100%; min-width:1px; border:0px; border-top:1px solid #e5e5e5;}
+/*隐藏按钮*/
+.navbar-default .navbar-toggle{ border-color:#FFF;}
+.navbar-default .navbar-toggle .icon-bar{ background-color:#FFF;}
+.topbar-num{font-size: 12px;color: #fff;background: #f90;border-radius: 5px;padding: 2px 5px;display: inline-block;line-height: 16px;vertical-align: top;text-align: center;}
+.li-border{border-right: 1px solid #2a2f32;}
+/*左侧导航选中样式*/
+.sBox ul .active{ background-color:#09C;}
+/*搜索*/
+.dropdown .search-dropdown{left:auto; right:0px; padding:0px; width:280px;border: 2px solid #373d41;}
+.dropdown .search-dropdown .form-control{ border:0px;}
+.dropdown .search-dropdown .btn{ padding:7px 12px; border-radius:0px; border:0px; color:#FFF; background-color:#373d41;}
+/*时间*/
+.time-title .year-month{ padding:10px; background-color:#09C; height:100%; color:#FFF;}
+.time-title .hour-minute{color:#09C; line-height:70px; background-color:#FFF; padding-left:10px; padding-right:10px;}
+/*按钮*/
+.btn-mystyle{color: #FFF;background-color: #09C;}
+
+/*产品与服务下拉内容*/
+.navbar-nav .dropdown .topbar-nav-list{ color:#000; font-size:12px;padding:10px; width:auto; white-space: nowrap;}
+.topbar-nav-col{vertical-align: top;padding: 0 10px; display:inline-block;}
+.topbar-nav-col .topbar-nav-item-title{margin: 3px 0px;color: #999;font-weight: 600; font-size:12px;}
+.topbar-nav-col ul li{ list-style:none; min-width: 160px;height: 28px;line-height: 28px;margin-bottom: 2px;}
+.dropdown-menu .topbar-nav-col ul{ padding-top:5px; padding-left:0px;}
+.topbar-nav-col ul li a{display: block;height: 100%;padding: 0 10px;text-decoration: none;color: #333;}
+.topbar-nav-col ul li a:hover{ background-color:#f2f2f2;}
+.topbar-nav-col .topbar-nav-item{ border-bottom:solid 1px #f2f2f2;}
+.dropdown-menu{ min-width:10px;}

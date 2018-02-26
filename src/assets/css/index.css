@@ -1,0 +1,5 @@
+.down-main{position: absolute;width: 100%;top: 50px;bottom: 0px;z-index: 100;-webkit-font-smoothing: antialiased;}
+.my-index{ background-color:#eceff3;}
+.right-full{ left:160px;}
+.right-product{position: absolute;top: 0px;bottom: 0px;right: 0px;background: #FFF;overflow-x: hidden;overflow-y: auto;}
+.right-off{ left:48px;}
