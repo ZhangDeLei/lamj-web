@@ -1,21 +1,24 @@
-import httpReq from '../../assets/plugins/http/httpService'
-import api from '../../assets/plugins/http/api'
-import store from '../../store/store'
+import httpReq from '../../../plugins/http/httpService'
+import api from '../../../plugins/http/api'
+import store from '../../../../store/store'
 
 export default {
   name: "menu-left",
   data() {
     return {
-      menuList: []
+      menuList: [],
+      currentMenuCode: ''
     };
   },
   mounted: function () {
     this.getMenuList();
   },
   methods: {
-    sendRedirect: function (e) {
-      var path = $(e.currentTarget).attr('data-name');
-      this.$router.push({path: path});
+    sendRedirect: function (i) {
+      if (i.path) {
+        this.currentMenuCode = i.code;
+        this.$router.push({path: i.path, query: {name: i.name}});
+      }
     },
     showNav: function (e) {
       /*显示*/
@@ -33,7 +36,7 @@ export default {
         $(e.currentTarget).addClass("sublist-down");
       }
       // 修改数字控制速度， slideUp(500)控制卷起速度
-      $(e.currentTarget).next(".navContent").slideToggle(300).siblings(".navContent").slideUp(300);
+      $(e.currentTarget).next(".navContent").slideToggle(100).siblings(".navContent").slideUp(100);
     },
     showMenu: function (e) {
       if ($(e.currentTarget).parent().attr('class') == "left-main left-full") {

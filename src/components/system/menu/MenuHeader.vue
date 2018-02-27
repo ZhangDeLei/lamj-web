@@ -9,7 +9,7 @@
       <a class="navbar-brand mystyle-brand"><span class="glyphicon glyphicon-home"></span></a></div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="li-border"><a class="mystyle-color" href="#">管理控制台</a></li>
+        <li class="li-border"><router-link class="mystyle-color" to="/content-main">管理控制台</router-link></li>
         <!--<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"-->
                                           <!--data-toggle="dropdown">产品与服务<span-->
           <!--class="caret"></span></a>-->
@@ -159,7 +159,7 @@
   </nav>
 </template>
 
-<script src="../../assets/js/menu-header.js"></script>
+<script src="../../../assets/js/system/menu/menu-header.js"></script>
 <style scoped>
-  @import "../../assets/css/menu-header.css";
+  @import "../../../assets/css/system/menu/menu-header.css";
 </style>

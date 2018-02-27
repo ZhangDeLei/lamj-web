@@ -1,5 +1,5 @@
-import MenuHeader from '@/components/menu/MenuHeader'
-import MenuLeft from '@/components/menu/MenuLeft'
+import MenuHeader from '@/components/system/menu/MenuHeader'
+import MenuLeft from '@/components/system/menu/MenuLeft'
 
 export default {
   name: 'index',

@@ -1,0 +1,4 @@
+@import "../../assets/css/common.css";
+.org{margin-left: 5px;margin-right: 5px;height: 50%;}
+.org>div,.org .cpanel{height: 100%;}
+.task{margin-left: 20px;margin-right: 20px; margin-top: 10px;position: absolute;bottom: 10px;top:50%;right: 10px;left: 10px;}
