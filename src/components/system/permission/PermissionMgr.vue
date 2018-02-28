@@ -2,7 +2,7 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <el-button type="primary" class="pri-button" @click="dialogEditShow=true">新增权限</el-button>
+      <el-button type="primary" class="pri-button" @click="showInsertDialog">新增权限</el-button>
     </div>
     <el-table
       :data="permissionList"
@@ -33,8 +33,8 @@
         <template slot-scope="scope">
           <el-button-group>
             <el-button size="mini" round type="danger" @click="showDeleteDialog(scope.row.id)">删除</el-button>
-            <el-button size="mini" round type="success" @click="dialogConfigShow=true">权限配置</el-button>
-            <el-button size="mini" round type="primary" @click="dialogEditShow=true">编辑</el-button>
+            <el-button size="mini" round type="success" @click="showConfigDialog(scope.row)">权限配置</el-button>
+            <el-button size="mini" round type="primary" @click="showEditDialog(scope.row)">编辑</el-button>
           </el-button-group>
         </template>
       </el-table-column>
@@ -53,7 +53,7 @@
     </el-dialog>
 
     <el-dialog title="新增权限" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
-      <el-form>
+      <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="权限名称">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
@@ -68,12 +68,44 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-            <el-button @click="dialogDeleteShow = false">取 消</el-button>
-            <el-button type="primary" @click="confirmPermission">确 定</el-button>
-          </span>
+        <el-button @click="dialogEditShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirmPermission">确 定</el-button>
+      </span>
     </el-dialog>
-    <el-dialog title="权限配置" :visible.sync="dialogConfigShow" width="50%" center :modal-append-to-body="false">
-
+    <el-dialog :title="form.name+'-权限配置'" :visible.sync="dialogConfigShow" width="50%" center
+               :modal-append-to-body="false" @close="closeConfigDialog">
+      <el-row>
+        <el-col :span="10">
+          <div class="config">
+            <div class="title">已选列表</div>
+            <div class="list">
+              <el-tree :data="getPermissionTreeList"
+                       show-checkbox node-key="id" ref="checkTree" default-expand-all></el-tree>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="4">
+          <div class="config button">
+            <div class="center">
+              <el-button icon="el-icon-arrow-left" round @click="addMenu"></el-button>
+              <el-button icon="el-icon-arrow-right" round @click="removeMenu"></el-button>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="10">
+          <div class="config">
+            <div class="title">未选列表</div>
+            <div class="list">
+              <el-tree :data="getNocheckMenuTree"
+                       show-checkbox node-key="id" ref="nocheckTree" default-expand-all></el-tree>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogConfigShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirmConfigPermission">保 存</el-button>
+      </span>
     </el-dialog>
   </div>
 </template>

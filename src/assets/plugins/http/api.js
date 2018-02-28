@@ -8,6 +8,7 @@ const api = {
   url_insertMenu: 'menu/insertMenu',
   url_updateMenu: 'menu/updateMenu',
   url_deleteMenu: 'menu/deleteMenu',
+  url_getPermissionMenuForTreeById: 'permission/getPermissionMenuForTreeById',
   url_getPermissionList: 'permission/getPermissionList',
   url_insertPermission: '/permission/insert',
   url_insertPermissionMenuRela: '/permission/insertPermisionMenuRela',
