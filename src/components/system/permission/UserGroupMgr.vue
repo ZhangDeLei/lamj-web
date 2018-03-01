@@ -2,81 +2,22 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <el-button type="primary" class="pri-button">新增权限</el-button>
+      <el-button type="primary" class="pri-button" @click="dialogEditShow=true">新增用户组</el-button>
     </div>
     <el-table
-      :data="menuList"
+      :data="groupList"
       style="width: 100%;position: absolute;top:60px;bottom: 0px;">
-      <el-table-column type="expand">
-        <template slot-scope="props">
-          <el-table :data="props.row.childs">
-            <el-table-column
-              label="菜单名称"
-              prop="name">
-            </el-table-column>
-            <el-table-column
-              label="菜单编码"
-              prop="code">
-            </el-table-column>
-            <el-table-column
-              label="图标"
-              prop="icon">
-              <template slot-scope="scope">
-                <i :class="scope.row.icon"></i>
-              </template>
-            </el-table-column>
-            <el-table-column
-              label="级别"
-              prop="level">
-            </el-table-column>
-            <el-table-column
-              label="路径"
-              prop="path">
-            </el-table-column>
-            <el-table-column
-              label="状态">
-              <template slot-scope="scope">
-                <el-switch
-                  v-model="scope.row.status==1"
-                  active-color="#13ce66"
-                  inactive-color="#ff4949">
-                </el-switch>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button-group>
-                  <el-button size="mini" round type="danger" @click="showDeleteMenuDialog(scope.row.id)">删除</el-button>
-                  <el-button size="mini" round type="primary">
-                    <router-link :to="{name:'menu-edit',params:{id:scope.row.id},query:{name:'菜单编辑'}}" style="color: white">编辑</router-link>
-                  </el-button>
-                </el-button-group>
-              </template>
-            </el-table-column>
-          </el-table>
-        </template>
-      </el-table-column>
       <el-table-column
-        label="菜单名称"
+        label="名称"
         prop="name">
       </el-table-column>
       <el-table-column
-        label="菜单编码"
+        label="编码"
         prop="code">
       </el-table-column>
       <el-table-column
-        label="图标">
-        <template slot-scope="scope">
-          <i :class="scope.icon"></i>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="级别"
-        prop="level">
-      </el-table-column>
-      <el-table-column
-        label="路径"
-        prop="path">
+        label="描述"
+        prop="description">
       </el-table-column>
       <el-table-column
         label="状态">
@@ -91,10 +32,9 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button size="mini" round type="danger" @click="showDeleteMenuDialog(scope.row.id)">删除</el-button>
-            <el-button size="mini" round type="primary">
-              <router-link :to="{name:'menu-edit',params:{id:scope.row.id},query:{name:'菜单编辑'}}" style="color: white">编辑</router-link>
-            </el-button>
+            <el-button size="mini" round type="danger" @click="showDeleteDialog(scope.row.id)" icon="el-icon-delete"></el-button>
+            <el-button size="mini" round type="success" @click="showConfigDialog(scope.row)" icon="el-icon-setting"></el-button>
+            <el-button size="mini" round type="primary" @click="showEditDialog(scope.row)" icon="el-icon-edit-outline"></el-button>
           </el-button-group>
         </template>
       </el-table-column>
@@ -104,11 +44,49 @@
       title="删除提示"
       :visible.sync="dialogDeleteShow"
       width="30%"
-      center :modal-append-to-body="false" @close="deleteDialogClose">
-      <span>确认删除选中餐厅吗？</span>
+      center :modal-append-to-body="false">
+      <span>确认删除选中用户组吗？</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogDeleteShow = false">取 消</el-button>
         <el-button type="primary" @click="confirmDeleteMenu">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <el-dialog title="新增用户组" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="名称">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="编码">
+          <el-input v-model="form.code" :disabled="true"></el-input>
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-switch v-model="form.status"></el-switch>
+        </el-form-item>
+        <el-form-item label="描述">
+          <el-input type="textarea" v-model="form.description"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogEditShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirmGroup">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <el-dialog :title="form.name+'-权限配置'" :visible.sync="dialogConfigShow" width="50%" center
+               :modal-append-to-body="false" @close="closeConfigDialog">
+      <el-transfer
+        style="position: relative;left: 56%;transform: translateX(-50%)"
+        :titles="['未选','已选']"
+        filterable
+        :filter-method="filterMethod"
+        filter-placeholder="请输入权限名称"
+        v-model="checkList"
+        :data="nocheckList">
+      </el-transfer>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogConfigShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirmConfigPermission">保 存</el-button>
       </span>
     </el-dialog>
   </div>

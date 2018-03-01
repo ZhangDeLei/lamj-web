@@ -9,6 +9,8 @@ import PermissionMgr from '@/components/system/permission/PermissionMgr'
 import UserGroupMgr from '@/components/system/permission/UserGroupMgr'
 import OrgList from '@/components/system/org/OrgList'
 import UserMgr from '@/components/system/user/UserMgr'
+import UserAdd from '@/components/system/user/UserAdd'
+import UserConfig from '@/components/system/user/UserConfig'
 import store from "../store/store"
 import * as types from "../store/types"
 
@@ -34,7 +36,10 @@ const routes = [
       {path: '/permission', name: 'permission', component: PermissionMgr, meta: {requireAuth: true}},
       {path: '/permission/user-group-mgr', name: 'user-group-mgr', component: UserGroupMgr, meta: {requireAuth: true}},
       {path: '/org', name: 'org', component: OrgList, meta: {requireAuth: true}},
-      {path: '/user', name: 'user', component: UserMgr, meta: {requireAuth: true}}
+      {path: '/user', name: 'user', component: UserMgr, meta: {requireAuth: true}},
+      {path: '/user/user-add', name: 'user-add', component: UserAdd, meta: {requireAuth: true}},
+      {path: '/user/user-edit/:id', name: 'user-edit', component: UserAdd, meta: {requireAuth: true}},
+      {path: '/user/user-config', name: 'user-config', component: UserConfig, meta: {requireAuth: true}},
     ]
   }
 ];

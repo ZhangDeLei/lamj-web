@@ -186,7 +186,7 @@ export default {
       }
     },
     confirmConfigPermission: function () {
-      httpReq.post(api.url_insertPermissionMenuRela, this.getPermissionList()).then(res => {
+      httpReq.post(api.url_insertPermissionMenuRela, {Id: this.form.id, mIds: this.getPermissionList()}).then(res => {
         if (res.code == 100) {
           this.dialogConfigShow = false;
         } else {
@@ -197,9 +197,9 @@ export default {
     getPermissionList: function () {
       var list = [];
       this.permissionMenuTreeList.forEach(t => {
-        list.push({menuId: t.id, permissionId: this.form.id})
+        list.push(t.id)
         t.children.forEach(n => {
-          list.push({menuId: n.id, permissionId: this.form.id})
+          list.push(n.id)
         })
       })
       return list;

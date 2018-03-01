@@ -2,9 +2,10 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
+      <router-link :to="{name:'menu-add',query:{name:'菜单新增'}}">
       <el-button type="primary" class="pri-button">
-        <router-link :to="{name:'menu-add',query:{name:'菜单新增'}}" style="color: white;">新增菜单</router-link>
-      </el-button>
+        新增菜单
+      </el-button></router-link>
     </div>
     <el-table
       :data="menuList"
@@ -93,9 +94,8 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button size="mini" round type="danger" @click="showDeleteMenuDialog(scope.row.id)">删除</el-button>
-            <el-button size="mini" round type="primary">
-              <router-link :to="{name:'menu-edit',params:{id:scope.row.id},query:{name:'菜单编辑'}}" style="color: white">编辑</router-link>
+            <el-button size="mini" round type="danger" @click="showDeleteMenuDialog(scope.row.id)" icon="el-icon-delete"></el-button>
+            <el-button size="mini" round type="primary" icon="el-icon-edit-outline" @click="gotoEditMenu(scope.row)">
             </el-button>
           </el-button-group>
         </template>

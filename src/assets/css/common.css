@@ -9,3 +9,5 @@
 .cpanel .title .name{position: relative}
 .cpanel .title .right{position: relative;float: right;right: 0px;}
 .cpanel .cont{width: 100%; padding: 0px 15px 15px 15px;}
+.v-center{position: absolute;top: 50%;transform: translateY(-50%)}
+.h-center{position: absolute;left: 50%;transform: translateX(-50%)}

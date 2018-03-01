@@ -41,6 +41,9 @@ export default {
     //dialog关闭回调
     deleteDialogClose: function () {
       this.currentSelectMenuId = -1;
+    },
+    gotoEditMenu:function (item) {
+      this.$router.push({name:'menu-edit',params:{id:item.id},query:{name:'菜单编辑'}})
     }
   }
 }
