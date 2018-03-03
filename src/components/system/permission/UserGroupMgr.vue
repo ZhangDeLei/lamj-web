@@ -32,25 +32,13 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button size="mini" round type="danger" @click="showDeleteDialog(scope.row.id)" icon="el-icon-delete"></el-button>
+            <el-button size="mini" round type="danger" @click="confirmDeleteMenu(scope.row.id)" icon="el-icon-delete"></el-button>
             <el-button size="mini" round type="success" @click="showConfigDialog(scope.row)" icon="el-icon-setting"></el-button>
             <el-button size="mini" round type="primary" @click="showEditDialog(scope.row)" icon="el-icon-edit-outline"></el-button>
           </el-button-group>
         </template>
       </el-table-column>
     </el-table>
-
-    <el-dialog
-      title="删除提示"
-      :visible.sync="dialogDeleteShow"
-      width="30%"
-      center :modal-append-to-body="false">
-      <span>确认删除选中用户组吗？</span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogDeleteShow = false">取 消</el-button>
-        <el-button type="primary" @click="confirmDeleteMenu">确 定</el-button>
-      </span>
-    </el-dialog>
 
     <el-dialog title="新增用户组" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
       <el-form ref="form" :model="form" label-width="80px">

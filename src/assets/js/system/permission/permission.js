@@ -8,7 +8,6 @@ export default {
       menuTreeList: [],//当前所有菜单树形列表
       permissionMenuTreeList: [],//当前权限菜单树形列表
       permissionList: [],
-      dialogDeleteShow: false,//删除弹框
       dialogEditShow: false, //编辑弹框
       dialogConfigShow: false, //权限配置弹框
       form: {id: '', name: '', code: '', status: true, description: ''}, //form表单
@@ -158,15 +157,19 @@ export default {
         }
       })
     },
-    confirmDeleteMenu: function () {
-      httpReq.post(api.url_deletePermission, {Id: this.currentSelectPermissionId}).then(res => {
-        if (res.code == 100) {
-          this.currentSelectPermissionId = -1;
-          this.dialogDeleteShow = false;
-          this.getData();
-        } else {
-          this.$message({message: res.msg, type: 'warning'})
-        }
+    confirmDeleteMenu: function (id) {
+      this.$confirm('确认删除当前权限信息吗？', '提示', {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        httpReq.post(api.url_deletePermission, {Id: id}).then(res => {
+          if (res.code == 100) {
+            this.getData();
+          } else {
+            this.$message({message: res.msg, type: 'warning'})
+          }
+        })
       })
     },
     confirmPermission: function () {
@@ -203,10 +206,6 @@ export default {
         })
       })
       return list;
-    },
-    showDeleteDialog: function (id) {
-      this.dialogDeleteShow = true;
-      this.currentSelectPermissionId = id;
     },
     showEditDialog: function (item) {
       this.form = item;

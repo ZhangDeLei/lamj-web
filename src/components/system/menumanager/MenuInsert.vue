@@ -15,7 +15,7 @@
       </el-form-item>
       <el-form-item label="上级菜单" v-if="form.level==2">
         <el-select v-model="form.parentId" placeholder="请选择上级菜单">
-          <el-option v-for="item in menuList" :key="item.id" :label="item.name" :value="item.id" ></el-option>
+          <el-option v-for="item in menuList" :key="item.id" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="菜单编码">
@@ -32,7 +32,9 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">{{form.id>0?'保存修改':'立即创建'}}</el-button>
-        <el-button><router-link :to="{name:'menu',query:{name:'菜单列表'}}" style="color:#606266">取消</router-link></el-button>
+        <el-button>
+          <router-link :to="{name:'menu',query:{name:'菜单列表'}}" style="color:#606266">取消</router-link>
+        </el-button>
       </el-form-item>
     </el-form>
   </div>

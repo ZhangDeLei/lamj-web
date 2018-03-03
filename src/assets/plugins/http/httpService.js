@@ -13,7 +13,7 @@ instance.interceptors.request.use(config => {
     fullscreen: true,
     lock: true,
     text: '正在加载,请稍后...',
-    spinner: 'ei-icon-loading'
+    spinner: 'el-icon-loading'
   })
   config.data = JSON.stringify(config.data);
   if (store.state.token) {
@@ -80,12 +80,29 @@ var appendParams = function (param) {
   }
   return params.length > 0 ? "?" + params : "";
 }
+var configUploadHeader = {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,DELETE,PUT',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization,version',
+    'version': 1
+  }
+};
 export default {
   get(url, param) {
     return instance.get(url + appendParams(param), "");
   },
   post(url, param) {
     return instance.post(url, param);
+  },
+  upload(url, formData) {
+    var path = api.url_local + url;
+    var config = configUploadHeader;
+    if (store.state.token) {
+      config.headers.Authorization = store.state.token;
+    }
+    return axios.post(path, formData, config);
   }
 }
 

@@ -5,8 +5,6 @@ export default {
   name: "menu-list",
   data() {
     return {
-      dialogDeleteShow: false,
-      currentSelectMenuId: -1,
       menuList: []
     }
   },
@@ -21,29 +19,25 @@ export default {
         }
       });
     },
-    //显示删除弹框
-    showDeleteMenuDialog: function (id) {
-      this.dialogDeleteShow = true;
-      this.currentSelectMenuId = id;
-    },
     //dialog确认提交
-    confirmDeleteMenu: function () {
-      this.dialogDeleteShow = false;
-      httpReq.post(api.url_deleteMenu, {Id: this.currentSelectMenuId}).then(res => {
-        if (res.code == 100) {
-          this.$message({message: "删除菜单成功", type: "success"})
-          this.getMenuList();
-        } else {
-          this.$message({message: res.msg, type: "warning"})
-        }
+    confirmDeleteMenu: function (id) {
+      this.$confirm('确认删除当前选中菜单吗？', '提示', {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        httpReq.post(api.url_deleteMenu, {Id: id}).then(res => {
+          if (res.code == 100) {
+            this.$message({message: "删除菜单成功", type: "success"})
+            this.getMenuList();
+          } else {
+            this.$message({message: res.msg, type: "warning"})
+          }
+        })
       })
     },
-    //dialog关闭回调
-    deleteDialogClose: function () {
-      this.currentSelectMenuId = -1;
-    },
-    gotoEditMenu:function (item) {
-      this.$router.push({name:'menu-edit',params:{id:item.id},query:{name:'菜单编辑'}})
+    gotoEditMenu: function (item) {
+      this.$router.push({name: 'menu-edit', params: {id: item.id}, query: {name: '菜单编辑'}})
     }
   }
 }

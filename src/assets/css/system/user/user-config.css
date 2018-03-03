@@ -9,7 +9,9 @@
 .right-content{position: absolute;top:60px;bottom: 0px;left: 200px;right: 0px;}
 .right-content .right-top{height: 50%;width: 100%;border-bottom: solid 1px #dddddd;}
 .right-content .right-bottom{height: 50%;width: 100%;}
-.right-content .right-tag{height: 30px;line-height: 30px;margin-left: 20px;}
+.right-content .right-tag{height: 30px;line-height: 30px;margin-left: 20px;position: absolute;}
 .right-content .right-cnt{width: 100%;}
 
+
+.transfer-cls{height: 100%;}
 .h-center{position: relative;left: 70%;transform: translateX(-50%)}

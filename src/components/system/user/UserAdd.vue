@@ -10,15 +10,18 @@
       <el-form-item label="账号" prop="userAccount">
         <el-input v-model="form.userAccount" placeholder="请输入账号"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item label="密码" prop="password" v-if="!isUpdate">
         <el-input v-model="form.password" placeholder="请输入密码" type="password"></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="cpassword" v-if="!isUpdate">
+        <el-input v-model="form.cpassword" placeholder="请再次确认密码" type="password"></el-input>
       </el-form-item>
       <el-form-item label="手机号码" prop="tel">
         <el-input type="number" v-model="form.tel" placeholder="请输入手机号码"/>
       </el-form-item>
       <el-form-item label="性别" prop="sex">
         <el-radio v-model="form.sex" label="1">男</el-radio>
-        <el-radio v-model="form.sex" label="2">女</el-radio>
+        <el-radio v-model="form.sex" label="0">女</el-radio>
       </el-form-item>
       <el-form-item label="状态">
         <el-switch
@@ -27,7 +30,7 @@
           inactive-color="#ff4949">
         </el-switch>
       </el-form-item>
-      <el-form-item label="头像">
+      <el-form-item label="头像" v-if="!isUpdate">
         <div>
           <label class="selectImage" for="imageFile">选择文件</label>
           <input type="file" id="imageFile" @change="changeFile"/>
@@ -38,7 +41,7 @@
         </div>
       </el-form-item>
       <el-form-item size="large">
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="onSubmit">{{isUpdate?"保存信息":"立即创建"}}</el-button>
         <el-button @click="reset">重置</el-button>
       </el-form-item>
     </el-form>

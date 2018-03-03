@@ -9,7 +9,6 @@ export default {
       groupList: [],
       checkList: [],
       nocheckList: [],
-      dialogDeleteShow: false,
       dialogEditShow: false,
       dialogConfigShow: false,
       filterMethod(query, item) {
@@ -41,10 +40,6 @@ export default {
         })
       })
     },
-    showDeleteDialog: function (id) {
-      this.form.id = id;
-      this.dialogDeleteShow = true;
-    },
     showConfigDialog: function (item) {
       this.form = item;
       this.dialogConfigShow = true;
@@ -55,15 +50,19 @@ export default {
       this.form.status = item.status == 1 ? true : false;
       this.dialogEditShow = true;
     },
-    confirmDeleteMenu: function () {
-      httpReq.post(api.url_deleteGroup, {Id: this.form.id}).then(res => {
-        if (res.code == 100) {
-          this.form = {};
-          this.dialogDeleteShow = false;
-          this.getData();
-        } else {
-          this.$message.error(res.msg)
-        }
+    confirmDeleteMenu: function (id) {
+      this.$confirm('确认删除当前用户组信息吗？', '提示', {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        httpReq.post(api.url_deleteGroup, {Id: id}).then(res => {
+          if (res.code == 100) {
+            this.getData();
+          } else {
+            this.$message.error(res.msg)
+          }
+        })
       })
     },
     confirmGroup: function () {
