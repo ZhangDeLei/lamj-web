@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "org-list"
+        name: "company-team-mgr"
     }
 </script>
 

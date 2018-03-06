@@ -7,10 +7,12 @@ import MenuList from '@/components/system/menumanager/MenuList'
 import MenuInsert from '@/components/system/menumanager/MenuInsert'
 import PermissionMgr from '@/components/system/permission/PermissionMgr'
 import UserGroupMgr from '@/components/system/permission/UserGroupMgr'
-import OrgList from '@/components/system/org/OrgList'
+import CompanyMgr from '@/components/system/company/CompanyMgr'
 import UserMgr from '@/components/system/user/UserMgr'
 import UserAdd from '@/components/system/user/UserAdd'
 import UserConfig from '@/components/system/user/UserConfig'
+import DataMonitor from '@/components/system/system/DataMonitor'
+import DictMgr from '@/components/system/system/DictMgr'
 import store from "../store/store"
 import * as types from "../store/types"
 
@@ -35,11 +37,14 @@ const routes = [
       {path: '/menu-edit/:id', name: 'menu-edit', component: MenuInsert, meta: {requireAuth: true}},
       {path: '/permission', name: 'permission', component: PermissionMgr, meta: {requireAuth: true}},
       {path: '/permission/user-group-mgr', name: 'user-group-mgr', component: UserGroupMgr, meta: {requireAuth: true}},
-      {path: '/org', name: 'org', component: OrgList, meta: {requireAuth: true}},
+      {path: '/company-mgr', name: 'company-mgr', component: CompanyMgr, meta: {requireAuth: true}},
       {path: '/user', name: 'user', component: UserMgr, meta: {requireAuth: true}},
       {path: '/user/user-add', name: 'user-add', component: UserAdd, meta: {requireAuth: true}},
       {path: '/user/user-edit/:id', name: 'user-edit', component: UserAdd, meta: {requireAuth: true}},
+      {path: '/user/user-config/:id', name: 'user-config-edit', component: UserConfig, meta: {requireAuth: true}},
       {path: '/user/user-config', name: 'user-config', component: UserConfig, meta: {requireAuth: true}},
+      {path: '/system/data-monitor', name: 'data-monitor', component: DataMonitor, meta: {requireAuth: true}},
+      {path: '/system/dict-mgr', name: 'dict-mgr', component: DictMgr, meta: {requireAuth: true}}
     ]
   }
 ];

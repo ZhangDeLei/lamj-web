@@ -13,7 +13,7 @@
         <!--<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"-->
                                           <!--data-toggle="dropdown">产品与服务<span-->
           <!--class="caret"></span></a>-->
-          <!----下拉框选项---->
+          <!--&lt;!&ndash;下拉框选项&ndash;&gt;-->
           <!--<div class="dropdown-menu topbar-nav-list">-->
             <!--<div class="topbar-nav-col">-->
               <!--<div class="topbar-nav-item">-->
@@ -110,34 +110,34 @@
       </ul>
 
       <ul class="nav navbar-nav pull-right">
-        <li class="li-border">
-          <a href="#" class="mystyle-color">
-            <span class="glyphicon glyphicon-bell"></span>
-            <span class="topbar-num">0</span>
-          </a>
-        </li>
-        <li class="li-border dropdown"><a href="#" class="mystyle-color" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-search"></span> 搜索</a>
-          <div class="dropdown-menu search-dropdown">
-            <div class="input-group">
-              <input type="text" class="form-control">
-              <span class="input-group-btn">
-                   <button type="button" class="btn btn-default">搜索</button>
-                </span>
-            </div>
-          </div>
-        </li>
-        <li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"
-                                          data-toggle="dropdown">帮助与文档<span
-          class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="http://localhost:8080/lamj/swagger-ui.html">帮助与文档</a></li>
-            <li class="divider"></li>
-            <li><a href="#">论坛</a></li>
-            <li class="divider"></li>
-            <li><a href="#">博客</a></li>
-          </ul>
-        </li>
+        <!--<li class="li-border">-->
+          <!--<a href="#" class="mystyle-color">-->
+            <!--<span class="glyphicon glyphicon-bell"></span>-->
+            <!--<span class="topbar-num">0</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <!--<li class="li-border dropdown"><a href="#" class="mystyle-color" data-toggle="dropdown">-->
+          <!--<span class="glyphicon glyphicon-search"></span> 搜索</a>-->
+          <!--<div class="dropdown-menu search-dropdown">-->
+            <!--<div class="input-group">-->
+              <!--<input type="text" class="form-control">-->
+              <!--<span class="input-group-btn">-->
+                   <!--<button type="button" class="btn btn-default">搜索</button>-->
+                <!--</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</li>-->
+        <!--<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"-->
+                                          <!--data-toggle="dropdown">帮助与文档<span-->
+          <!--class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="http://localhost:8080/lamj/swagger-ui.html">帮助与文档</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li><a href="#">论坛</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li><a href="#">博客</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
         <li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">{{NickName}}<span
           class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -159,7 +159,7 @@
   </nav>
 </template>
 
-<script src="../../../assets/js/system/menu/menu-header.js"></script>
+<script src="../../assets/js/system/menu/menu-header.js"></script>
 <style scoped>
-  @import "../../../assets/css/system/menu/menu-header.css";
+  @import "../../assets/css/system/menu/menu-header.css";
 </style>

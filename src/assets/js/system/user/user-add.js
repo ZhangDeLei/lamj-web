@@ -16,6 +16,8 @@ export default {
       form: {id: '', sex: '1'},
       imageFile: {},
       isUpdate: false,
+      StarList: [],
+      TypeList: [],
       rules: {
         nickName: [{required: true, message: '请输入昵称'}],
         userAccount: [{required: true, message: '请输入账号'}],
@@ -25,12 +27,15 @@ export default {
           trigger: 'blur'
         }],
         tel: [{required: true, message: '请输入手机号码'}],
-        sex: [{required: true, message: '请选择性别'}]
+        sex: [{required: true, message: '请选择性别'}],
+        typeId: [{required: true, message: '请选择类别'}]
       }
     }
   },
   mounted() {
     this.updateUI();
+    this.getDictList('Type');
+    this.getDictList('StarLevel');
   },
   watch: {
     "$route": "updateUI"
@@ -44,6 +49,12 @@ export default {
         this.form = {id: '', sex: '1'};
         this.imageFile = {};
       }
+    },
+    getDictList: function (type) {
+      httpReq.get(api.url_getDictListByEnName, {EnName: type}).then(res => {
+        if (type == 'Type') this.TypeList = res.data;
+        else this.StarList = res.data;
+      })
     },
     getUserInfo: function (id) {
       httpReq.get(api.url_getUserById, {Id: id}).then(res => {
@@ -115,6 +126,20 @@ export default {
         this.form = {};
         this.imageFile = {};
       }
+    },
+    levelChange: function (e) {
+      var obj = this.StarList.filter(function (t) {
+        return t.id == e;
+      })[0]
+      this.form.starLevelCode = obj.code;
+      this.form.starLevelName = obj.label;
+    },
+    typeChange: function (e) {
+      var obj = this.TypeList.filter(function (t) {
+        return t.id == e;
+      })[0]
+      this.form.typeCode = obj.code;
+      this.form.typeName = obj.label;
     }
   }
 }

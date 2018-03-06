@@ -1,3 +1,4 @@
+::-webkit-scrollbar{width: 0px;}
 /*左侧导航栏*/
 .down-main{position: absolute;width: 100%;top: 50px;bottom: 0px;z-index: 100;-webkit-font-smoothing: antialiased;}
 .left-full{ width:160px; display:block;}
@@ -14,6 +15,7 @@
 .sBox ul{ padding:0px; position: relative; margin:0px;}
 .sBox ul li a{display: block;width: 100%;height: 40px;line-height: 40px;overflow: hidden; text-decoration:none; color:#FFF;}
 .sBox .sublist-icon{ width:48px; text-align:center;}
+.subNavBox{overflow-y: auto;position: absolute;top: 30px;bottom: 0px;width: 100%;-webkit-scroll-snap-type: none;}
 .subNavBox .subNav{ height:40px; line-height:40px; color: #fff;}
 .subNavBox .subNav .title-icon{ width:24px; text-align:center; margin-left: 12px;}
 .sBox .sublist-down{ background-color:#22282e;}

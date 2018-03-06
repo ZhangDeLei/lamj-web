@@ -5,8 +5,8 @@
       <el-button type="primary" class="pri-button" @click="dialogEditShow=true">新增用户组</el-button>
     </div>
     <el-table
-      :data="groupList"
-      style="width: 100%;position: absolute;top:60px;bottom: 0px;">
+      :data="groupData.list"
+      class="page-list">
       <el-table-column
         label="名称"
         prop="name">
@@ -39,7 +39,13 @@
         </template>
       </el-table-column>
     </el-table>
-
+    <el-pagination
+      class="page"
+      :page-size="groupData.pageSize"
+      layout="total, prev, pager, next"
+      :total="groupData.total"
+      @current-change="handleCurrentChange">
+    </el-pagination>
     <el-dialog title="新增用户组" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="名称">

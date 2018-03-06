@@ -42,23 +42,22 @@ instance.interceptors.response.use(response => {
       message: response.data.msg,
       type: 'error'
     })
-    return Promise.reject(response.data.msg);
   } else if (response.data.code == 201) {
     Message({
       showClose: true,
       message: '账户不存在',
       type: 'error'
     })
-    return Promise.reject(response.data.msg);
   } else if (response.data.code == 202) {
     Message({
       showClose: true,
       message: '密码错误',
       type: 'error'
     })
-    return Promise.reject(response.data.msg);
   } else if (response.data.code == 203) { //未登录
     this.$router.push({path: '/'});
+  } else if (response.data.code == 205) {
+    Message({showClose: true, message: '当前企业已经超过有效期，请先续费', type: 'error'});
   }
   return response.data;
 }, error => {
@@ -89,7 +88,17 @@ var configUploadHeader = {
     'version': 1
   }
 };
+var configHtmlHeader = {
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,DELETE,PUT',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization,version',
+    'version': 1
+  }
+};
 export default {
+
   get(url, param) {
     return instance.get(url + appendParams(param), "");
   },
@@ -97,12 +106,24 @@ export default {
     return instance.post(url, param);
   },
   upload(url, formData) {
-    var path = api.url_local + url;
     var config = configUploadHeader;
+    return this.common(url, formData, config);
+  },
+  html(url) {
+    var path = api.url_host + url;
+    var config = configHtmlHeader;
+    config.accept = 'text/html, text/plain';
     if (store.state.token) {
       config.headers.Authorization = store.state.token;
     }
-    return axios.post(path, formData, config);
+    return axios.post(path, {}, config);
+  },
+  common(url, param, config) {
+    var path = api.url_local + url;
+    if (store.state.token) {
+      config.headers.Authorization = store.state.token;
+    }
+    return axios.post(path, param, config);
   }
 }
 

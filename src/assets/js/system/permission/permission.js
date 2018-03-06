@@ -5,18 +5,25 @@ export default {
   name: "permission-mgr",
   data() {
     return {
+      typeList: [],
       menuTreeList: [],//当前所有菜单树形列表
       permissionMenuTreeList: [],//当前权限菜单树形列表
-      permissionList: [],
+      permissionData: {},
       dialogEditShow: false, //编辑弹框
       dialogConfigShow: false, //权限配置弹框
       form: {id: '', name: '', code: '', status: true, description: ''}, //form表单
-      currentSelectPermissionId: -1//当前选中的权限ID
+      currentSelectPermissionId: -1,//当前选中的权限ID
+      pageSize: 10,
+      rules: {
+        name: [{required: true, message: '请输入名称'}],
+        typeId: [{required: true, message: '请选择类型'}]
+      }
     }
   },
   mounted: function () {
-    this.getData();
+    this.getData(1);
     this.getMenuTree();
+    this.getTypeList();
   },
   computed: {
     getNocheckMenuTree: function () {
@@ -49,6 +56,13 @@ export default {
     }
   },
   methods: {
+    getTypeList: function () {
+      httpReq.get(api.url_getDictListByEnName, {EnName: 'Type'}).then(res => {
+        if (res.code == 100) {
+          this.typeList = res.data;
+        }
+      })
+    },
     removeNode: function (keys, data) {
       var list = [];
       for (var item of data) {
@@ -134,10 +148,10 @@ export default {
       }
       return data;
     },
-    getData: function () {
-      httpReq.get(api.url_getPermissionList, "").then(res => {
+    getData: function (curPage) {
+      httpReq.get(api.url_getPermissionList, {PageSize: this.pageSize, CurPage: curPage}).then(res => {
         if (res.code == 100) {
-          this.permissionList = res.data;
+          this.permissionData = res.data;
         } else {
           this.$message({message: res.msg, type: 'warning'});
         }
@@ -165,7 +179,7 @@ export default {
       }).then(() => {
         httpReq.post(api.url_deletePermission, {Id: id}).then(res => {
           if (res.code == 100) {
-            this.getData();
+            this.getData(1);
           } else {
             this.$message({message: res.msg, type: 'warning'})
           }
@@ -173,20 +187,22 @@ export default {
       })
     },
     confirmPermission: function () {
-      if (!this.form.name) {
-        this.$message({message: '请输入权限名称', type: 'warning'})
-      } else {
-        this.form.status = this.form.status || this.form.status == 1 ? 1 : 0;
-        var url = this.form.id > 0 ? api.url_updatePermission : api.url_insertPermission;
-        httpReq.post(url, this.form).then(res => {
-          if (res.code == 100) {
-            this.dialogEditShow = false;
-            this.getData();
-          } else {
-            this.$message({message: res.msg, type: 'warning'})
-          }
-        })
-      }
+      this.$refs['form'].validate((v) => {
+        if (v) {
+          this.form.status = this.form.status || this.form.status == 1 ? 1 : 0;
+          var url = this.form.id > 0 ? api.url_updatePermission : api.url_insertPermission;
+          httpReq.post(url, this.form).then(res => {
+            if (res.code == 100) {
+              this.dialogEditShow = false;
+              this.getData(1);
+            } else {
+              this.$message({message: res.msg, type: 'warning'})
+            }
+          })
+        } else {
+          return false;
+        }
+      })
     },
     confirmConfigPermission: function () {
       httpReq.post(api.url_insertPermissionMenuRela, {Id: this.form.id, mIds: this.getPermissionList()}).then(res => {
@@ -226,6 +242,16 @@ export default {
       this.form = {};
       this.dialogConfigShow = false;
       this.permissionMenuTreeList = [];
+    },
+    typeChange: function (e) {
+      var obj = this.typeList.filter(function (t) {
+        return t.id == e;
+      })[0]
+      this.form.typeCode = obj.code;
+      this.form.typeName = obj.label;
+    },
+    handleCurrentChange: function (val) {
+      this.getData(val);
     }
   }
 }

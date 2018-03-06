@@ -10,7 +10,7 @@ export default {
       permissionList: [],
       userGroupList: [],
       userPermissionList: [],
-      checkUser: {},
+      checkUserId: '',
       inputValue: ''
     }
   },
@@ -18,6 +18,9 @@ export default {
     this.getUserList()
     this.getGroupList()
     this.getPermissionList()
+    if(this.$route.params.id){
+      this.selectUser(this.$route.params.id);
+    }
   },
   computed: {
     searchList: function () {
@@ -43,17 +46,17 @@ export default {
   },
   methods: {
     getUserList: function () {
-      httpReq.get(api.url_getUserListByCondition).then(res => {
+      httpReq.get(api.url_getAllUser).then(res => {
         this.userList = res.data;
       })
     },
     getGroupList: function () {
-      httpReq.get(api.url_getGroupList).then(res => {
+      httpReq.get(api.url_getAllGroupList).then(res => {
         this.groupList = res.data;
       })
     },
     getPermissionList: function () {
-      httpReq.get(api.url_getPermissionList).then(res => {
+      httpReq.get(api.url_getAllPermissionList).then(res => {
         this.permissionList = res.data;
       })
     },
@@ -71,10 +74,10 @@ export default {
         }
       })
     },
-    selectUser: function (obj) {
-      this.checkUser = obj;
-      this.getUserGroupList(obj.id);
-      this.getUserPermissionList(obj.id);
+    selectUser: function (id) {
+      this.checkUserId = id;
+      this.getUserGroupList(id);
+      this.getUserPermissionList(id);
     },
     convertTransList: function (list) {
       var data = [];

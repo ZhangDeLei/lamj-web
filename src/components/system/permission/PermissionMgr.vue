@@ -5,8 +5,8 @@
       <el-button type="primary" class="pri-button" @click="showInsertDialog">新增权限</el-button>
     </div>
     <el-table
-      :data="permissionList"
-      style="width: 100%;position: absolute;top:60px;bottom: 0px;">
+      :data="permissionData.list"
+      class="table-list">
       <el-table-column
         label="权限名称"
         prop="name">
@@ -15,6 +15,7 @@
         label="权限编码"
         prop="code">
       </el-table-column>
+      <el-table-column label="类别" prop="typeName"></el-table-column>
       <el-table-column
         label="描述"
         prop="description">
@@ -40,16 +41,32 @@
       </el-table-column>
     </el-table>
 
+    <el-pagination
+      class="page"
+      :page-size="permissionData.pageSize"
+      layout="total, prev, pager, next"
+      :total="permissionData.total"
+      @current-change="handleCurrentChange">
+    </el-pagination>
     <el-dialog title="新增权限" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
-      <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="权限名称">
+      <el-form ref="form" :rules="rules" :model="form" label-width="80px">
+        <el-form-item label="权限名称" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="权限编码">
           <el-input v-model="form.code" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="状态">
-          <el-switch v-model="form.status"></el-switch>
+          <el-col :span="12">
+            <el-switch v-model="form.status"></el-switch>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="类别" prop="typeId" style="margin-bottom: 0px;">
+              <el-select v-model="form.typeId" placeholder="请选择类别" @change="typeChange">
+                <el-option v-for="item of typeList" :key="item.id" :value="item.id" :label="item.label"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
         </el-form-item>
         <el-form-item label="描述">
           <el-input type="textarea" v-model="form.description"></el-input>

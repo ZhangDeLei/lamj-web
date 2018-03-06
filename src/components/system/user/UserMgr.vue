@@ -6,59 +6,170 @@
         <el-button type="primary" class="pri-button">新增用户</el-button>
       </router-link>
     </div>
-    <div style="width: 100%;position: absolute;top:60px;bottom: 0px;overflow: auto;">
-      <el-table
-        :data="userList"
-        height="600px">
-        <el-table-column
-          label="名称"
-          prop="nickName">
-        </el-table-column>
-        <el-table-column
-          label="账号"
-          prop="userAccount">
-        </el-table-column>
-        <el-table-column
-          label="手机号码"
-          prop="tel">
-        </el-table-column>
-        <el-table-column
-          label="性别">
-          <template slot-scope="scope">
-            {{scope.row.sex==1?'男':'女'}}
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="头像">
-          <template slot-scope="scope">
-            <img v-if="scope.row.photoUrl" style="width: 50px;height: 50px;" :src="url+scope.row.photoUrl"/>
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="状态">
-          <template slot-scope="scope">
-            <el-switch
-              v-model="scope.row.status==1"
-              active-color="#13ce66"
-              inactive-color="#ff4949">
-            </el-switch>
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" width="160">
-          <template slot-scope="scope">
-            <el-button-group>
-              <el-button size="mini" round type="danger" @click="confirmDeleteMenu(scope.row.id)"
-                         icon="el-icon-delete"></el-button>
-              <el-button size="mini" round type="success" @click="gotoConfigPage(scope.row.id)"
-                         icon="el-icon-setting"></el-button>
-              <el-button size="mini" round type="primary" @click="gotoEditPage(scope.row.id)"
-                         icon="el-icon-edit-outline"></el-button>
-            </el-button-group>
-          </template>
-        </el-table-column>
-      </el-table>
+    <div class="searchContent">
+      <el-form :inline="true" :model="searchForm" class="demo-form-inline">
+        <el-form-item label="名称">
+          <el-input v-model="searchForm.Name" placeholder="名称"></el-input>
+        </el-form-item>
+        <el-form-item label="账号">
+          <el-input v-model="searchForm.UserAccount" placeholder="账号"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号码">
+          <el-input v-model="searchForm.Tel" placeholder="手机号码"></el-input>
+        </el-form-item>
+        <el-form-item class="searchBtn">
+          <el-button type="primary" @click="onSearch">查询<i class="el-icon-search el-icon--right"></i></el-button>
+          <el-button @click="showMore">更多条件<i class="el-icon-more el-icon--right"></i></el-button>
+        </el-form-item>
+      </el-form>
     </div>
+    <el-table
+      class="table-list"
+      :data="userData.list">
+      <el-table-column
+        label="名称"
+        prop="nickName">
+      </el-table-column>
+      <el-table-column
+        label="账号"
+        prop="userAccount">
+      </el-table-column>
+      <el-table-column
+        label="手机号码"
+        prop="tel">
+      </el-table-column>
+      <el-table-column
+        label="性别">
+        <template slot-scope="scope">
+          {{scope.row.sex==1?'男':'女'}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="头像">
+        <template slot-scope="scope">
+          <img v-if="scope.row.photoUrl" style="width: 50px;height: 50px;" :src="url+scope.row.photoUrl"/>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="状态">
+        <template slot-scope="scope">
+          <el-switch
+            v-model="scope.row.status==1"
+            active-color="#13ce66"
+            inactive-color="#ff4949">
+          </el-switch>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="160">
+        <template slot-scope="scope">
+          <el-button-group>
+            <el-button size="mini" round type="danger" @click="confirmDeleteMenu(scope.row.id)"
+                       icon="el-icon-delete"></el-button>
+            <el-button size="mini" round type="success" @click="gotoConfigPage(scope.row.id)"
+                       icon="el-icon-setting"></el-button>
+            <el-button size="mini" round type="primary" @click="gotoEditPage(scope.row.id)"
+                       icon="el-icon-edit-outline"></el-button>
+          </el-button-group>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination
+      class="page"
+      :page-size="userData.pageSize"
+      layout="total, prev, pager, next"
+      :total="userData.total"
+      @current-change="handleCurrentChange">
+    </el-pagination>
+    <el-dialog width="50%" title="查询" :modal-append-to-body="false" :visible.sync="showMoreDialog">
+      <el-form ref="form" :model="searchForm" label-width="80px">
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="名称">
+              <el-input v-model="searchForm.Name" placeholder="名称"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="账号">
+              <el-input v-model="searchForm.UserAccount" placeholder="账号"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="手机号码">
+              <el-input v-model="searchForm.Tel" placeholder="手机号码"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="性别">
+              <el-select v-model="searchForm.Sex" placeholder="性别">
+                <el-option label="" value=""></el-option>
+                <el-option label="男" value="1"></el-option>
+                <el-option label="女" value="0"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="状态">
+              <el-select v-model="searchForm.Status" placeholder="状态">
+                <el-option label="" value=""></el-option>
+                <el-option label="可用" value="1"></el-option>
+                <el-option label="不可用" value="0"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="类型">
+            <el-select v-model="searchForm.TypeId" placeholder="类型" @change="changeType">
+              <el-option label="" value=""></el-option>
+              <el-option v-for="item in TypeList" :key="item.id" :label="item.label" :value="item.id"></el-option>
+            </el-select>
+          </el-form-item>
+          </el-col>
+        </el-row>
+
+        <el-row v-if="searchForm.TypeCode=='0002'">
+          <el-col :span="12">
+            <el-form-item label="星级">
+              <el-select v-model="searchForm.StarLevelId" placeholder="星级">
+                <el-option label="" value=""></el-option>
+                <el-option v-for="item in StarList" :key="item.id" :label="item.label" :value="item.id"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所属企业">
+              <el-select v-model="searchForm.StarLevelId" filterable placeholder="企业">
+                <el-option label="" value=""></el-option>
+                <el-option v-for="item in CompanyList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <el-row v-if="searchForm.TypeCode=='0002'">
+          <el-col :span="12">
+            <el-form-item label="队伍">
+              <el-select v-model="searchForm.StarLevelId" filterable placeholder="队伍">
+                <el-option label="" value=""></el-option>
+                <el-option v-for="item in TeamList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+
+          </el-col>
+        </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="showMoreDialog = false">取 消</el-button>
+        <el-button type="primary" @click="onSearch">开始查询</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 

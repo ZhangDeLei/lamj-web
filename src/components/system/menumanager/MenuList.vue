@@ -7,7 +7,7 @@
         新增菜单
       </el-button></router-link>
     </div>
-    <div style="width: 100%;position: absolute;top:60px;bottom: 0px;overflow: auto;">
+    <div class="table-list">
       <el-table
         :data="menuList">
         <el-table-column type="expand">
@@ -46,10 +46,10 @@
                   </el-switch>
                 </template>
               </el-table-column>
-              <el-table-column label="操作">
+              <el-table-column label="操作" width="150px">
                 <template slot-scope="scope">
                   <el-button-group>
-                    <el-button size="mini" round type="danger" @click="showDeleteMenuDialog(scope.row.id)">删除</el-button>
+                    <el-button size="mini" round type="danger" @click="confirmDeleteMenu(scope.row.id)">删除</el-button>
                     <el-button size="mini" round type="primary">
                       <router-link :to="{name:'menu-edit',params:{id:scope.row.id},query:{name:'菜单编辑'}}" style="color: white">编辑</router-link>
                     </el-button>

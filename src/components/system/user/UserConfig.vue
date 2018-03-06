@@ -14,7 +14,7 @@
       </div>
       <div class="left-list">
         <ul>
-          <li v-for="item in searchList" :class="{'active':item.id==checkUser.id}" @click="selectUser(item)">{{item.nickName}}</li>
+          <li v-for="item in searchList" :class="{'active':item.id==checkUserId}" @click="selectUser(item.id)">{{item.nickName}}</li>
         </ul>
       </div>
     </div>

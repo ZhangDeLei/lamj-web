@@ -11,13 +11,34 @@
         <el-input v-model="form.userAccount" placeholder="请输入账号"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password" v-if="!isUpdate">
-        <el-input v-model="form.password" placeholder="请输入密码" type="password"></el-input>
-      </el-form-item>
-      <el-form-item label="确认密码" prop="cpassword" v-if="!isUpdate">
-        <el-input v-model="form.cpassword" placeholder="请再次确认密码" type="password"></el-input>
+        <el-col :span="12">
+          <el-input v-model="form.password" placeholder="请输入密码" type="password"></el-input>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="确认密码" prop="cpassword" style="margin-bottom: 0px;">
+            <el-input v-model="form.cpassword" placeholder="请再次确认密码" type="password"></el-input>
+          </el-form-item>
+        </el-col>
       </el-form-item>
       <el-form-item label="手机号码" prop="tel">
-        <el-input type="number" v-model="form.tel" placeholder="请输入手机号码"/>
+        <el-input v-model="form.tel" placeholder="请输入手机号码"/>
+      </el-form-item>
+      <el-form-item label="邮箱">
+        <el-input v-model="form.email" placeholder="请输入邮箱"/>
+      </el-form-item>
+      <el-form-item label="星级">
+        <el-col :span="12">
+          <el-select v-model="form.starLevelId" placeholder="请选择星级" @change="levelChange">
+            <el-option v-for="item in StarList" :key="item.id" :label="item.label" :value="item.id"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="类别" prop="typeId" style="margin-bottom: 0px;">
+            <el-select v-model="form.typeId" placeholder="请选择类别" @change="typeChange">
+              <el-option v-for="item in TypeList" :key="item.id" :label="item.label" :value="item.id"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
       </el-form-item>
       <el-form-item label="性别" prop="sex">
         <el-radio v-model="form.sex" label="1">男</el-radio>

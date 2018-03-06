@@ -5,3 +5,4 @@
 .config.button{text-align: center;border: none;}
 .config.button>.center{position: relative;top:50%;transform: translateY(-50%);}
 .config.button>.center>button{margin-left: 0px;margin-top: 15px;}
+.table-list{bottom: 40px;}

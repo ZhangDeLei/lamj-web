@@ -6,9 +6,10 @@ export default {
   data() {
     return {
       form: {id: '', status: false},
-      groupList: [],
+      groupData: {},
       checkList: [],
       nocheckList: [],
+      pageSize: 10,
       dialogEditShow: false,
       dialogConfigShow: false,
       filterMethod(query, item) {
@@ -17,13 +18,13 @@ export default {
     }
   },
   mounted: function () {
-    this.getData();
+    this.getData(1);
     this.getPerList();
   },
   methods: {
-    getData: function () {
-      httpReq.get(api.url_getGroupList, "").then(res => {
-        this.groupList = res.data;
+    getData: function (page) {
+      httpReq.get(api.url_getGroupList, {PageSize: this.pageSize, CurPage: page}).then(res => {
+        this.groupData = res.data;
       })
     },
     getPerList: function () {
@@ -58,7 +59,7 @@ export default {
       }).then(() => {
         httpReq.post(api.url_deleteGroup, {Id: id}).then(res => {
           if (res.code == 100) {
-            this.getData();
+            this.getData(1);
           } else {
             this.$message.error(res.msg)
           }
@@ -75,7 +76,7 @@ export default {
           if (res.code == 100) {
             this.form = {};
             this.dialogEditShow = false;
-            this.getData();
+            this.getData(1);
           } else {
             this.$message.error(res.msg)
           }
@@ -95,6 +96,9 @@ export default {
     },
     closeConfigDialog: function () {
       this.form = {};
+    },
+    handleCurrentChange:function (val) {
+      this.getData(val);
     }
   }
 }
