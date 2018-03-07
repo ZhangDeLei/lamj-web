@@ -1,9 +1,9 @@
-import httpReq from '../../../plugins/http/httpService'
-import api from '../../../plugins/http/api'
-import axios from 'axios'
+import api from "../../../plugins/http/api";
+import httpReq from "../../../plugins/http/httpService";
+import store from '../../../../store/store'
 
 export default {
-  name: "user-add",
+  name: "team-user-edit",
   data() {
     var validPass = (rule, value, callback) => {
       if (value != this.form.password) {
@@ -30,8 +30,7 @@ export default {
           trigger: 'blur'
         }],
         tel: [{required: true, message: '请输入手机号码'}],
-        sex: [{required: true, message: '请选择性别'}],
-        typeId: [{required: true, message: '请选择类别'}]
+        sex: [{required: true, message: '请选择性别'}]
       }
     }
   },
@@ -39,16 +38,12 @@ export default {
     this.updateUI();
     this.getDictList('Type');
     this.getDictList('StarLevel');
+    this.getTeamList(store.state.user.companyId);
   },
   watch: {
     "$route": "updateUI"
   },
   methods: {
-    getCompanyList: function () {
-      httpReq.get(api.url_getAllCompanyList).then(res => {
-        this.CompanyList = res.data;
-      })
-    },
     getPermissionList: function () {
       httpReq.get(api.url_getAllPermissionList).then(res => {
         this.permissionList = res.data;
@@ -66,7 +61,6 @@ export default {
         this.isUpdate = false;
         this.form = {id: '', sex: '1'};
         this.imageFile = {};
-        this.getCompanyList();
         this.getPermissionList();
       }
     },
@@ -82,7 +76,6 @@ export default {
           this.isUpdate = true;
           this.form = res.data;
           this.form.sex = this.form.sex + '';
-          this.getCompanyList();
           this.getPermissionList();
         } else {
           this.$message.error(res.msg);
@@ -113,9 +106,9 @@ export default {
       });
     },
     insertUser: function () {
-      var url = this.isUpdate ? api.url_updateUser : api.url_insertUser;
+      var url = this.isUpdate ? api.url_updateCustom : api.url_insertCustom;
+      this.form.companyId = store.state.user.companyId;
       httpReq.post(url, this.form).then(r => {
-        console.log(r)
         if (r.code == 100) {
           this.$message.success(this.isUpdate ? "修改成功" : "新增成功");
           this.form = {};

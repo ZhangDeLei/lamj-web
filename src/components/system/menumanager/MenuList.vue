@@ -40,7 +40,7 @@
                 label="状态">
                 <template slot-scope="scope">
                   <el-switch
-                    v-model="scope.row.status==1"
+                    v-model="scope.row.status"
                     active-color="#13ce66"
                     inactive-color="#ff4949">
                   </el-switch>
@@ -85,7 +85,7 @@
           label="状态">
           <template slot-scope="scope">
             <el-switch
-              v-model="scope.row.status==1"
+              v-model="scope.row.status"
               active-color="#13ce66"
               inactive-color="#ff4949">
             </el-switch>

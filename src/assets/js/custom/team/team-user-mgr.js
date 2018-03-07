@@ -1,8 +1,9 @@
 import httpReq from '../../../plugins/http/httpService'
 import api from '../../../plugins/http/api'
+import store from '../../../../store/store'
 
 export default {
-  name: 'user-mgr',
+  name: "team-user-mgr",
   data() {
     return {
       url: api.url_host,
@@ -12,7 +13,6 @@ export default {
       pageSize: 10,
       StarList: [],
       TypeList: [],
-      CompanyList: [],
       TeamList: [],
       showMoreDialog: false
     }
@@ -21,14 +21,8 @@ export default {
     this.getData(1, {});
     this.getDictList('Type');
     this.getDictList('StarLevel');
-    this.getCompanyList();
   },
   methods: {
-    getCompanyList: function () {
-      httpReq.get(api.url_getAllCompanyList).then(res => {
-        this.CompanyList = res.data;
-      })
-    },
     getTeamList: function (id) {
       if (id) {
         httpReq.get(api.url_getTeamListByCompanyId, {CompanyId: id}).then(res => {
@@ -41,6 +35,7 @@ export default {
     getData: function (page, form) {
       form.PageSize = this.pageSize;
       form.CurPage = page;
+      form.CompanyId = store.state.user.companyId;
       httpReq.get(api.url_getUserListByCondition, form).then(res => {
         this.userData = res.data;
       })
@@ -71,7 +66,7 @@ export default {
       this.getData(1, this.searchForm);
     },
     gotoEditPage: function (id) {
-      this.$router.push({name: 'user-edit', params: {id: id}, query: {name: '用户编辑'}});
+      this.$router.push({name: 'team-user-edit', params: {id: id}, query: {name: '用户编辑'}});
     },
     handleCurrentChange: function (val) {
       this.getData(val, this.searchForm)

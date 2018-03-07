@@ -9,24 +9,14 @@
         <el-form-item label="名称">
           <el-input v-model="searchForm.Name" clearable placeholder="名称"></el-input>
         </el-form-item>
-        <el-form-item label="所属企业">
-          <el-select v-model="searchForm.CompanyId" placeholder="请选择企业">
-            <el-option label="" value=""></el-option>
-            <el-option v-for="item in CompanyList" :key="item.id" :label="item.name" :value="item.id"></el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item class="searchBtn">
-          <el-button type="primary" @click="onSearch">查询</el-button>
+          <el-button type="primary" @click="getData">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
     <el-table
       class="page-list"
-      :data="teamData.list">
-      <el-table-column
-        label="所属企业"
-        prop="companyName">
-      </el-table-column>
+      :data="teamData">
       <el-table-column
         label="名称"
         prop="name">
@@ -55,23 +45,11 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      class="page"
-      :page-size="teamData.pageSize"
-      layout="total, prev, pager, next"
-      :total="teamData.total"
-      @current-change="handleCurrentChange">
-    </el-pagination>
 
     <el-dialog title="新增队伍" :visible.sync="dialogEditShow" width="50%" :modal-append-to-body="false">
       <el-form ref="editForm" :model="editForm" size="mini" :rules="rules" label-width="100px">
         <el-form-item label="名称" prop="name">
           <el-input v-model="editForm.name" placeholder="名称"></el-input>
-        </el-form-item>
-        <el-form-item label="所属企业" prop="companyId">
-          <el-select v-model="editForm.companyId" filterable placeholder="请选择企业" @change="companyChange">
-            <el-option v-for="item in CompanyList" :key="item.id" :label="item.name" :value="item.id"></el-option>
-          </el-select>
         </el-form-item>
         <el-form-item label="状态">
           <el-switch
@@ -91,8 +69,8 @@
   </div>
 </template>
 
-<script src="../../../assets/js/system/company/company-team-mgr.js"></script>
+<script src="../../../assets/js/custom/team/team-mgr.js"></script>
 
 <style scoped>
-  @import "../../../assets/css/system/company/company-team-mgr.css";
+  @import "../../../assets/css/custom/team/team-mgr.css";
 </style>

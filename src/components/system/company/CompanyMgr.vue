@@ -5,15 +5,15 @@
       <el-button type="primary" class="pri-button" @click="showInsertDialog">新增企业</el-button>
     </div>
     <div class="searchContent">
-      <el-form :inline="true" :model="searchForm" class="demo-form-inline" size="mini">
+      <el-form :inline="true" :model="searchForm" class="demo-form-inline">
         <el-form-item label="名称">
-          <el-input v-model="searchForm.Name" placeholder="名称" style="width: 100px;"></el-input>
+          <el-input v-model="searchForm.Name" clearable placeholder="名称"></el-input>
         </el-form-item>
         <el-form-item label="有效期">
           <el-col :span="11">
             <el-date-picker type="datetime" placeholder="开始时间" value-format="yyyy-MM-dd HH:mm:ss" v-model="searchForm.BegDate" style="width: 100%;"></el-date-picker>
           </el-col>
-          <el-col class="line" :span="2">-</el-col>
+          <el-col class="line" :span="2" style="text-align: center;">-</el-col>
           <el-col :span="11">
             <el-date-picker type="datetime" placeholder="结束时间" value-format="yyyy-MM-dd HH:mm:ss" v-model="searchForm.EndDate" style="width: 100%;"></el-date-picker>
           </el-col>

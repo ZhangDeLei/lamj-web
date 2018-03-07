@@ -7,7 +7,7 @@
           class="sublist-title">{{menu.name}}</span>
         </div>
         <ul class="navContent" style="display:block">
-          <li v-bind:class="{active:currentMenuCode==item.code}" v-for="item in menu.childs">
+          <li v-bind:class="{active:currentMenuCode==item.code}" v-for="item in menu.childs" @mouseenter="mouseenter" @mouseleave="mouseleave">
             <div class="showtitle" style="width:100px;"><img src="../../assets/images/leftimg.png"/>{{item.name}}</div>
             <a href="javascript:void(0)" @click="sendRedirect(item)"><span class="sublist-icon" :class="item.icon"></span><span
               class="sub-title">{{item.name}}</span></a></li>

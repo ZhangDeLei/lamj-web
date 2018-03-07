@@ -7,7 +7,8 @@ export default {
   data() {
     return {
       menuList: [],
-      currentMenuCode: ''
+      currentMenuCode: '',
+      currentMenuId: -1
     };
   },
   mounted: function () {
@@ -67,16 +68,19 @@ export default {
     },
     initMenu: function () {
       /*左侧鼠标移入提示功能*/
-      $(".sBox ul li").mouseenter(function () {
-        if ($(this).find("span:last-child").css("display") == "none") {
-          $(this).find("div").show();
-        }
-      }).mouseleave(function () {
-        $(this).find("div").hide();
-      })
+      // $(".sBox ul li").mouseenter(function () {
+      //
+      // }).mouseleave(function () {
+      //   $(this).find("div").hide();
+      // })
+    },
+    mouseenter: function (e) {
+      if ($(e.currentTarget).find("span:last-child").css("display") == "none") {
+        $(e.currentTarget).find("div").show();
+      }
+    },
+    mouseleave: function (e) {
+      $(e.currentTarget).find("div").hide();
     }
-  },
-  updated: function () {
-    this.initMenu();
   }
 }

@@ -46,22 +46,12 @@
               <el-option v-for="item in permissionList" :key="item.id" :label="item.name" :value="item.id"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="类别" prop="typeId">
-            <el-select v-model="form.typeId" placeholder="请选择类别" @change="typeChange">
-              <el-option v-for="item in TypeList" :key="item.id" :label="item.label" :value="item.id"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="星级" v-if="form.typeCode=='0002'">
+          <el-form-item label="星级">
             <el-select v-model="form.starLevelId" placeholder="请选择星级" @change="levelChange">
               <el-option v-for="item in StarList" :key="item.id" :label="item.label" :value="item.id"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="企业" v-if="form.typeCode=='0002'">
-            <el-select v-model="form.companyId" filterable placeholder="请选择企业" @change="companyChange">
-              <el-option v-for="item in CompanyList" :key="item.id" :label="item.name" :value="item.id"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="队伍" v-if="form.typeCode=='0002'">
+          <el-form-item label="队伍">
             <el-select v-model="form.teamId" placeholder="请选择队伍">
               <el-option v-for="item in TeamList" :key="item.id" :label="item.name" :value="item.id"></el-option>
             </el-select>
@@ -86,8 +76,8 @@
   </div>
 </template>
 
-<script src="../../../assets/js/system/user/user-add.js"></script>
+<script src="../../../assets/js/custom/team/team-user-edit.js"></script>
 
 <style scoped>
-  @import "../../../assets/css/system/user/user-add.css";
+  @import "../../../assets/css/custom/team/team-user-edit.css";
 </style>

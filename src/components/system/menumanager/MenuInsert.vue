@@ -3,11 +3,11 @@
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
     </div>
-    <el-form ref="form" :model="form" label-width="80px" style="margin: 10px;">
-      <el-form-item label="菜单名称">
+    <el-form ref="form" :rules="rules" :model="form" label-width="80px" style="margin: 10px;">
+      <el-form-item label="菜单名称" prop="name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="级别">
+      <el-form-item label="级别" prop="level">
         <el-select v-model="form.level" placeholder="请选择菜单级别">
           <el-option label="一级" value="1"></el-option>
           <el-option label="二级" value="2"></el-option>

@@ -189,7 +189,6 @@ export default {
     confirmPermission: function () {
       this.$refs['form'].validate((v) => {
         if (v) {
-          this.form.status = this.form.status || this.form.status == 1 ? 1 : 0;
           var url = this.form.id > 0 ? api.url_updatePermission : api.url_insertPermission;
           httpReq.post(url, this.form).then(res => {
             if (res.code == 100) {
@@ -225,7 +224,6 @@ export default {
     },
     showEditDialog: function (item) {
       this.form = item;
-      this.form.status = item.status == 1 ? true : false;
       this.dialogEditShow = true;
     },
     showInsertDialog: function () {

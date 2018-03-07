@@ -2,7 +2,7 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <router-link :to="{name:'user-add',query:{name:'新增账号'}}" style="color:white;">
+      <router-link :to="{name:'team-user-edit',query:{name:'新增账号'}}" style="color:white;">
         <el-button type="primary" class="pri-button">新增用户</el-button>
       </router-link>
     </div>
@@ -24,7 +24,7 @@
       </el-form>
     </div>
     <el-table
-      class="table-list"
+      class="page-list"
       :data="userData.list">
       <el-table-column
         label="名称"
@@ -119,41 +119,21 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="类型">
-            <el-select v-model="searchForm.TypeId" clearable placeholder="类型" @change="changeType">
-              <el-option v-for="item in TypeList" :key="item.id" :label="item.label" :value="item.id"></el-option>
-            </el-select>
-          </el-form-item>
-          </el-col>
-        </el-row>
-
-        <el-row v-if="searchForm.TypeCode=='0002'">
-          <el-col :span="12">
             <el-form-item label="星级">
               <el-select v-model="searchForm.StarLevelId" clearable placeholder="星级">
                 <el-option v-for="item in StarList" :key="item.id" :label="item.label" :value="item.id"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
-            <el-form-item label="所属企业">
-              <el-select v-model="searchForm.CompanyId" clearable filterable placeholder="企业" @change="companyChange">
-                <el-option v-for="item in CompanyList" :key="item.id" :label="item.name" :value="item.id"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
         </el-row>
 
-        <el-row v-if="searchForm.TypeCode=='0002'">
+        <el-row>
           <el-col :span="12">
             <el-form-item label="队伍">
               <el-select v-model="searchForm.TeamId" clearable filterable placeholder="队伍">
                 <el-option v-for="item in TeamList" :key="item.id" :label="item.name" :value="item.id"></el-option>
               </el-select>
             </el-form-item>
-          </el-col>
-          <el-col :span="12">
-
           </el-col>
         </el-row>
       </el-form>
@@ -165,8 +145,8 @@
   </div>
 </template>
 
-<script src="../../../assets/js/system/user/user.js"></script>
+<script src="../../../assets/js/custom/team/team-user-mgr.js"></script>
 
 <style scoped>
-  @import "../../../assets/css/system/user/user.css";
+  @import "../../../assets/css/custom/team/team-user-edit.css";
 </style>

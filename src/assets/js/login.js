@@ -20,7 +20,13 @@ export default {
           if (res.code == 100) {
             store.state.token = res.data.token;
             store.state.user = res.data.user;
-            this.$router.push({path: '/index'});
+            if (res.data.user.typeCode == "0001") {
+              this.$router.push({path: '/system'});
+            } else if (res.data.user.typeCode == '0002') {
+              this.$router.push({path: '/custom'})
+            } else {
+              msg.showErr('违法用户');
+            }
           } else {
             msg.showErr(res.msg);
           }

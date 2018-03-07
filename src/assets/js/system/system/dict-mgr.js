@@ -51,14 +51,12 @@ export default {
       this.$refs['editForm'].validate((v) => {
         if (v) {
           var url = this.editForm.id ? api.url_updateDict : api.url_insertDict;
-          this.editForm.status = this.editForm.status == 1 || this.editForm.status ? 1 : 0;
           httpReq.post(url, this.editForm).then(res => {
             if (res.code == 100) {
               this.dialogEditShow = false;
               this.$message.success('操作成功')
               this.getData(1);
             } else {
-              this.editForm.status = this.editForm.status == 1;
               this.$message.error(res.msg);
             }
           })
@@ -71,7 +69,6 @@ export default {
     showEditDialog: function (item) {
       this.editForm = {};
       this.editForm = item;
-      this.editForm.status = item.status == 1;
       this.editForm.type = this.editForm.type + '';
       this.dialogEditShow = true;
     },

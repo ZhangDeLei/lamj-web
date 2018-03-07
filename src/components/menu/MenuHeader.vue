@@ -9,7 +9,7 @@
       <a class="navbar-brand mystyle-brand"><span class="glyphicon glyphicon-home"></span></a></div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="li-border"><router-link class="mystyle-color" to="/content-main">管理控制台</router-link></li>
+        <li class="li-border nav-title" @click="gotoMain">管理控制台</li>
         <!--<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"-->
                                           <!--data-toggle="dropdown">产品与服务<span-->
           <!--class="caret"></span></a>-->
