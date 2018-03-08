@@ -12,6 +12,8 @@ import UserMgr from '@/components/system/user/UserMgr'
 import UserAdd from '@/components/system/user/UserAdd'
 import DataMonitor from '@/components/system/system/DataMonitor'
 import DictMgr from '@/components/system/system/DictMgr'
+import CaliberMgr from '@/components/system/caliber/CaliberMgr'
+import NewAuthMgr from '@/components/system/newauth/NewAuthMgr'
 
 import CustomMain from '@/components/views/CustomMain'
 import TeamMgr from '@/components/custom/team/TeamMgr'
@@ -52,7 +54,9 @@ const routes = [
       {path: '/user/user-add', name: 'user-add', component: UserAdd, meta: {requireAuth: true}},
       {path: '/user/user-edit/:id', name: 'user-edit', component: UserAdd, meta: {requireAuth: true}},
       {path: '/system/data-monitor', name: 'data-monitor', component: DataMonitor, meta: {requireAuth: true}},
-      {path: '/system/dict-mgr', name: 'dict-mgr', component: DictMgr, meta: {requireAuth: true}}
+      {path: '/system/dict-mgr', name: 'dict-mgr', component: DictMgr, meta: {requireAuth: true}},
+      {path: '/system/cailber-mgr', name: 'cailber-mgr', component: CaliberMgr, meta: {requireAuth: true}},
+      {path: '/system/new-auth-mgr', name: 'new-auth-mgr', component: NewAuthMgr, meta: {requireAuth: true}},
     ]
   },
   {
