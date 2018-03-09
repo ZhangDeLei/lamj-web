@@ -1,7 +1,8 @@
 import httpReq from '../plugins/http/httpService'
 import api from '../plugins/http/api'
 import msg from '../plugins/message/msg'
-import store from "../../store/store";
+import store from '../../store/store'
+import * as types from '../../store/types'
 
 export default {
   name: 'login',
@@ -18,8 +19,7 @@ export default {
         var param = {'UserAccount': this.userAccount, 'Password': this.password};
         httpReq.post(api.url_login, param).then((res) => {
           if (res.code == 100) {
-            store.state.token = res.data.token;
-            store.state.user = res.data.user;
+            store.commit(types.LOGIN, res.data)
             if (res.data.user.typeCode == "0001") {
               this.$router.push({path: '/system'});
             } else if (res.data.user.typeCode == '0002') {

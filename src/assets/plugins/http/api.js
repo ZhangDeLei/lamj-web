@@ -55,6 +55,25 @@ const api = {
   url_updateTeam: 'team/update',//更新队伍
   url_deleteTeam: 'team/delete',//删除队伍
 
+  url_getCaliberList: 'caliber/getCaliberList',//获取口径列表
+  url_insertCaliber: 'caliber/insert',//新增口径
+  url_updateCaliber: 'caliber/update',//更新口径
+  url_deleteCaliber: 'caliber/delete',//删除口径
+
+  url_getNewAuthList: 'newAuth/getNewAuthList',//获取新闻客户端列表
+  url_getAllNewAuthList: 'newAuth/getAllNewAuthList',//获取所有的新闻客户端列表
+  url_getNewAuthOperatorTypeList: 'newAuth/getNewAuthOperatorTypeList',//根据新闻id获取新闻可操作类型
+  url_deleteNewAuth: 'newAuth/delete',//删除新闻
+  url_insertNewAuth: 'newAuth/insert',//新增新闻
+  url_updateNewAuth: 'newAuth/update',//更新新闻
+
+  url_deleteTask: 'task/delete',//删除任务
+  url_deleteTaskByIds: 'task/deleteByIds',//批量删除任务
+  url_getTaskById: 'task/getTaskById',//根据任务ID获取任务详细信息
+  url_getTaskList: 'task/getTaskList',//获取任务列表
+  url_insertTask: 'task/insert',//新增任务
+  url_updateTask: 'task/update',//更新任务
+
   url_fileUpload: 'file/fileUpload'//文件上传
 }
 export default api;

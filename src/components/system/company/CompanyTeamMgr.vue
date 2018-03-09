@@ -75,6 +75,7 @@
         </el-form-item>
         <el-form-item label="状态">
           <el-switch
+            disabled
             v-model="editForm.status"
             active-color="#13ce66"
             inactive-color="#ff4949"></el-switch>

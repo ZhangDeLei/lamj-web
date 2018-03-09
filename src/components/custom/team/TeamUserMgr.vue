@@ -54,6 +54,7 @@
         label="状态">
         <template slot-scope="scope">
           <el-switch
+            disabled
             v-model="scope.row.status"
             active-color="#13ce66"
             inactive-color="#ff4949">

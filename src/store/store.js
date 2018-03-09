@@ -5,21 +5,34 @@ import * as types from './types'
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
-    user: {},
-    token: null,
+    user: {
+      get id() {
+        return localStorage.getItem('id')
+      },
+      get companyId(){
+        return localStorage.getItem('companyId')
+      },
+      get nickName(){
+        return localStorage.getItem('nickName')
+      }
+    },
+    token: localStorage.getItem('token'),
     title: ''
   },
   mutations: {
     [types.LOGIN]: (state, data) => {
-      localStorage.token = data;
-      state.token = data;
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data.user.id)
+      localStorage.setItem('companyId', data.user.companyId)
+      localStorage.setItem('nickName', data.user.nickName)
     },
     [types.LOGOUT]: (state) => {
       localStorage.removeItem('token');
-      state.token = null;
+      localStorage.removeItem('id')
+      localStorage.removeItem('companyId')
+      localStorage.removeItem('nickName')
     },
     [types.TITLE]: (state, data) => {
-      state.title = data;
     }
   }
 })

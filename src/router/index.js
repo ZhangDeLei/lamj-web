@@ -19,9 +19,11 @@ import CustomMain from '@/components/views/CustomMain'
 import TeamMgr from '@/components/custom/team/TeamMgr'
 import TeamUserMgr from '@/components/custom/team/TeamUserMgr'
 import TeamUserEdit from '@/components/custom/team/TeamUserEdit'
+import CaliberList from '@/components/custom/caliber/CaliberList'
+import TaskEdit from '@/components/custom/task/TaskEdit'
+import TaskMgr from '@/components/custom/task/TaskMgr'
 
 import store from "../store/store"
-import * as types from "../store/types"
 
 Vue.use(Router)
 
@@ -71,13 +73,13 @@ const routes = [
       {path: '/team/team-user-mgr', name: 'team-user-mgr', component: TeamUserMgr, meta: {requireAuth: true}},
       {path: '/team/team-user-edit', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
       {path: '/team/team-user-edit/:id', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
+      {path: '/caliber/caliber-list', name: 'caliber-list', component: CaliberList, meta: {requireAuth: true}},
+      {path: '/task/task-edit', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
+      {path: '/task/task-list', name: 'task-list', component: TaskMgr, meta: {requireAuth: true}},
     ]
   }
 ];
 
-if (window.localStorage.getItem('token')) {
-  store.commit(types.LOGIN, window.localStorage.getItem('token'));
-}
 const router = new Router({routes});
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
