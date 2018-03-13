@@ -1,29 +1,16 @@
 <template>
-  <div v-html="html"></div>
+  <div style="width: 100%;height: 100%;">
+    <iframe src="http://localhost:8080/lamj/druid" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+  </div>
+
 </template>
 
 <script>
   import api from '../../../assets/plugins/http/api'
-  import httpReq from '../../../assets/plugins/http/httpService'
+
   export default {
     name: "data-monitor",
-    data() {
-      return {
-        html: ''
-      }
-    },
-    mounted() {
-      this.load(api.url_dataMonitor);
-    },
-    methods: {
-      load(url) {
-        if (url && url.length > 0) {
-          httpReq.html(url).then(res=>{
-            this.html = res.data;
-          })
-        }
-      }
-    }
+    url: api.url_host + api.url_dataMonitor
   }
 </script>
 

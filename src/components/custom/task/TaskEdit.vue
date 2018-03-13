@@ -19,7 +19,7 @@
             <el-input placeholder="请输入积分" type="number" v-model="form.integral"/>
           </el-form-item>
           <el-form-item label="执行范围" prop="teamIds">
-            <el-select placeholder="请选择执行范围" clearable v-model="form.teamIds" multiple>
+            <el-select placeholder="请选择执行范围" v-model="form.teamIds" multiple>
               <el-option v-for="item in teamList" :key="item.id" :label="item.name" :value="item.id"/>
             </el-select>
           </el-form-item>
@@ -50,7 +50,7 @@
         </el-col>
       </el-row>
       <el-form-item>
-        <el-button type="primary" @click="commitEdit">立即创建</el-button>
+        <el-button type="primary" @click="commitEdit">{{form.id?'立即保存':'立即创建'}}</el-button>
         <router-link :to="{name:'task-list',query:{name:'已发布任务'}}">
           <el-button>取消</el-button>
         </router-link>

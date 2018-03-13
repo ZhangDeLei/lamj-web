@@ -2,7 +2,7 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <router-link :to="{name:'task-edit',query:{name:'发布新任务'}}">
+      <router-link :to="{name:'task-add',query:{name:'发布新任务'}}">
         <el-button type="primary" class="pri-button">发布新任务</el-button>
       </router-link>
     </div>
@@ -52,9 +52,9 @@
         label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button round icon="el-icon-delete" size="mini"/>
-            <el-button round icon="el-icon-document" size="mini"/>
-            <el-button round icon="el-icon-edit-outline" size="mini"/>
+            <el-button round icon="el-icon-delete" type="danger" size="mini"/>
+            <el-button round icon="el-icon-document" @click="openPage(scope.row.url)" type="success" size="mini"/>
+            <el-button round icon="el-icon-edit-outline" @click="openEditPage(scope.row.id)" type="primary" size="mini"/>
           </el-button-group>
         </template>
       </el-table-column>

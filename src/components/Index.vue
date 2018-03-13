@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>asdasdf</div>
+    <div></div>
     <app-header></app-header>
     <div class="down-main">
       <app-leftmenu></app-leftmenu>

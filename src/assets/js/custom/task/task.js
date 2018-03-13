@@ -28,8 +28,14 @@ export default {
         this.taskData = res.data;
       })
     },
-    onSearch:function () {
+    onSearch: function () {
       this.getData(1);
+    },
+    openPage: function (url) {
+      window.open(url);
+    },
+    openEditPage: function (id) {
+      this.$router.push({name: 'task-edit', params: {id: id}, query: {name: '编辑任务'}})
     }
   }
 }

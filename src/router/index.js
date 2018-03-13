@@ -74,7 +74,8 @@ const routes = [
       {path: '/team/team-user-edit', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
       {path: '/team/team-user-edit/:id', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
       {path: '/caliber/caliber-list', name: 'caliber-list', component: CaliberList, meta: {requireAuth: true}},
-      {path: '/task/task-edit', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
+      {path: '/task/task-add', name: 'task-add', component: TaskEdit, meta: {requireAuth: true}},
+      {path: '/task/task-edit/:id', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-list', name: 'task-list', component: TaskMgr, meta: {requireAuth: true}},
     ]
   }

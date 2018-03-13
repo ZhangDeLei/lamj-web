@@ -28,8 +28,29 @@ export default {
     this.getNewList();
     this.getDictList();
     this.getTeamList();
+    this.updateUI();
+  },
+  watch: {
+    "$router": "updateUI"
   },
   methods: {
+    updateUI: function () {
+      if (this.$route.params.id) {
+        this.getTaskDetail(this.$route.params.id)
+      }
+    },
+    getTaskDetail: function (id) {
+      this.form = {};
+      httpReq.get(api.url_getTaskById, {Id: id}).then(res => {
+        this.form = res.data;
+        this.form.teamIds = [];
+        this.getTaskType();
+        res.data.teams.forEach(t => {
+          this.form.teamIds.push(t.id);
+        })
+
+      })
+    },
     getNewList: function () {
       httpReq.get(api.url_getAllNewAuthList).then(res => {
         this.newList = res.data;
@@ -65,17 +86,14 @@ export default {
       var obj = this.taskType.filter(function (t) {
         return t.oprTypeId == _this.form.typeId;
       })[0]
-
       this.form.typeCode = obj.oprTypeCode;
       this.form.typeName = obj.oprTypeName;
     },
     execTypeChange: function () {
       var _this = this;
-      console.log(this.form.execTypeId)
       var obj = this.execType.filter(function (t) {
         return t.id == _this.form.execTypeId;
       })[0]
-      console.log(obj)
       this.form.execTypeCode = obj.code;
       this.form.execTypeName = obj.label;
     },
@@ -83,12 +101,12 @@ export default {
       var _this = this;
       this.$refs['form'].validate(function (v) {
         if (v) {
+          var url = _this.form.id ? api.url_updateTask : api.url_insertTask;
           _this.form.companyId = store.state.user.companyId;
           _this.form.teams = _this.convertTeamList();
           _this.form.createUserId = store.state.user.id;
           _this.form.createUserName = store.state.user.nickName;
-          console.log(_this.form)
-          httpReq.post(api.url_insertTask, _this.form).then(res => {
+          httpReq.post(url, _this.form).then(res => {
             if (res.code == 100) {
               _this.form = {};
               _this.form.teamIds = [];
