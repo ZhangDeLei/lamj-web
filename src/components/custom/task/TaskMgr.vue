@@ -39,7 +39,12 @@
     </div>
     <el-table
       :data="taskData.list"
-      class="page-list">
+      class="page-list"
+      @selection-change="handleSelectionChange">
+      <el-table-column
+        type="selection"
+        width="55">
+      </el-table-column>
       <el-table-column label="日期" prop="createDate"/>
       <el-table-column
         label="任务名称"
@@ -52,14 +57,16 @@
         label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button round icon="el-icon-delete" type="danger" size="mini"/>
+            <el-button round icon="el-icon-delete" type="danger" @click="commitDelete(scope.row.id)" size="mini"/>
             <el-button round icon="el-icon-document" @click="openPage(scope.row.url)" type="success" size="mini"/>
-            <el-button round icon="el-icon-edit-outline" @click="openEditPage(scope.row.id)" type="primary" size="mini"/>
+            <el-button round icon="el-icon-edit-outline" @click="openEditPage(scope.row.id)" type="primary"
+                       size="mini"/>
           </el-button-group>
         </template>
       </el-table-column>
     </el-table>
 
+    <el-button class="batch-btn" @click="batchCommitDelete" type="danger" size="mini">批量删除</el-button>
     <el-pagination
       class="page"
       :page-size="taskData.pageSize"

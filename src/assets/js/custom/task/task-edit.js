@@ -40,15 +40,27 @@ export default {
       }
     },
     getTaskDetail: function (id) {
-      this.form = {};
+      // this.form = {};
+
       httpReq.get(api.url_getTaskById, {Id: id}).then(res => {
-        this.form = res.data;
-        this.form.teamIds = [];
+        this.form.id = res.data.id;
+        this.form.url = res.data.url;
+        this.form.title = res.data.title;
+        this.form.comment = res.data.comment;
+        this.form.integral = res.data.integral;
+        this.form.newId = res.data.newId;
+        this.form.newName = res.data.newName;
+        this.form.typeId = res.data.typeId;
+        this.form.typeCode = res.data.typeCode;
+        this.form.typeName = res.data.typeName;
+        this.form.expireDate = res.data.expireDate
+        this.form.execTypeId = res.data.execTypeId;
+        this.form.execTypeCode = res.data.execTypeCode;
+        this.form.execTypeName = res.data.execTypeName;
         this.getTaskType();
         res.data.teams.forEach(t => {
           this.form.teamIds.push(t.id);
         })
-
       })
     },
     getNewList: function () {
@@ -108,9 +120,8 @@ export default {
           _this.form.createUserName = store.state.user.nickName;
           httpReq.post(url, _this.form).then(res => {
             if (res.code == 100) {
-              _this.form = {};
-              _this.form.teamIds = [];
               _this.$message.success('操作成功')
+              _this.$router.back();
             } else {
               _this.$message.success(res.msg)
             }

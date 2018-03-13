@@ -1,2 +1,3 @@
 @import "../../common.css";
 .page-list{top:110px;}
+.batch-btn{position: absolute;bottom: 5px;left: 10px;}
