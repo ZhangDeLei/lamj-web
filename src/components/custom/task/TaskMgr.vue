@@ -27,9 +27,8 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item label="站点">
-          <el-select v-model="form.Status" style="width: 100px;" clearable placeholder="状态">
-            <el-option label="可用" value="1"></el-option>
-            <el-option label="不可用" value="0"></el-option>
+          <el-select v-model="form.newId" style="width: 100px;" clearable placeholder="状态">
+            <el-option v-for="item in newData" :key="item.id" :label="item.name" value="item.id"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item class="searchBtn">
@@ -45,7 +44,11 @@
         type="selection"
         width="55">
       </el-table-column>
-      <el-table-column label="日期" prop="createDate"/>
+      <el-table-column label="日期">
+        <template slot-scope="scope">
+          {{getTime(scope.row.createDate)}}
+        </template>
+      </el-table-column>
       <el-table-column
         label="任务名称"
         prop="title">

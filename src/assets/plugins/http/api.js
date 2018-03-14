@@ -47,6 +47,8 @@ const api = {
   url_insertCompany: 'company/insert',//新增企业
   url_updateCompany: 'company/update',//修改企业
   url_deleteCompany: 'company/delete',//删除企业
+  url_insertCompanyNew: 'company/insertCompanyNew',//新增企业新闻客户端
+  url_deleteCompanyNewByCompanyIdAndNewId:'company/deleteCompanyNewByCompanyIdAndNewId',//根据企业ID和客户端ID删除新闻与企业的关联关系
 
   url_getTeamListByCompanyId: 'team/getTeamListByCompanyId',//根据企业ID获取企业的队伍列表
   url_getTeamList: 'team/getTeamList',//分页查询队伍列表
@@ -66,6 +68,8 @@ const api = {
   url_deleteNewAuth: 'newAuth/delete',//删除新闻
   url_insertNewAuth: 'newAuth/insert',//新增新闻
   url_updateNewAuth: 'newAuth/update',//更新新闻
+  url_getNewAuthListByCompanyId: 'newAuth/getNewAuthListByCompanyId',//根据企业ID获取新闻客户端
+  url_getNewCompanyByPage: 'newAuth/getNewCompanyByPage',//分页查询所有企业新闻客户端
 
   url_deleteTask: 'task/delete',//删除任务
   url_deleteTaskByIds: 'task/deleteByIds',//批量删除任务

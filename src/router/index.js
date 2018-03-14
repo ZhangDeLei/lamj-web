@@ -8,6 +8,7 @@ import MenuInsert from '@/components/system/menumanager/MenuInsert'
 import PermissionMgr from '@/components/system/permission/PermissionMgr'
 import CompanyMgr from '@/components/system/company/CompanyMgr'
 import CompanyTeamMgr from '@/components/system/company/CompanyTeamMgr'
+import CompanyNewMgr from '@/components/system/company/CompanyNewMgr'
 import UserMgr from '@/components/system/user/UserMgr'
 import UserAdd from '@/components/system/user/UserAdd'
 import DataMonitor from '@/components/system/system/DataMonitor'
@@ -22,6 +23,7 @@ import TeamUserEdit from '@/components/custom/team/TeamUserEdit'
 import CaliberList from '@/components/custom/caliber/CaliberList'
 import TaskEdit from '@/components/custom/task/TaskEdit'
 import TaskMgr from '@/components/custom/task/TaskMgr'
+import PatrolList from '@/components/custom/patrol/PatrolList'
 
 import store from "../store/store"
 
@@ -46,12 +48,8 @@ const routes = [
       {path: '/menu-edit/:id', name: 'menu-edit', component: MenuInsert, meta: {requireAuth: true}},
       {path: '/permission', name: 'permission', component: PermissionMgr, meta: {requireAuth: true}},
       {path: '/company-mgr', name: 'company-mgr', component: CompanyMgr, meta: {requireAuth: true}},
-      {
-        path: '/company/company-team-mgr',
-        name: 'company-team-mgr',
-        component: CompanyTeamMgr,
-        meta: {requireAuth: true}
-      },
+      {path: '/company/company-team-mgr', name: 'company-team-mgr', component: CompanyTeamMgr, meta: {requireAuth: true} },
+      {path: '/company/company-new-mgr', name: 'company-new-mgr', component: CompanyNewMgr, meta: {requireAuth: true} },
       {path: '/user', name: 'user', component: UserMgr, meta: {requireAuth: true}},
       {path: '/user/user-add', name: 'user-add', component: UserAdd, meta: {requireAuth: true}},
       {path: '/user/user-edit/:id', name: 'user-edit', component: UserAdd, meta: {requireAuth: true}},
@@ -77,6 +75,7 @@ const routes = [
       {path: '/task/task-add', name: 'task-add', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-edit/:id', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-list', name: 'task-list', component: TaskMgr, meta: {requireAuth: true}},
+      {path: '/patrol/patrol-list', name: 'patrol-list', component: PatrolList, meta: {requireAuth: true}},
     ]
   }
 ];

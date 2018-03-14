@@ -9,18 +9,24 @@ export default {
       form: {},
       taskData: {},
       pageSize: 10,
-      multipleSelection: []
+      multipleSelection: [],
+      newData: []
     }
   },
-  computed: {
-    getTime: function (date) {
-      return 'aaaa';
-    }
-  },
+  computed: {},
   mounted() {
     this.getData(1);
+    this.getNewData();
   },
   methods: {
+    getNewData: function () {
+      httpReq.get(api.url_getAllNewAuthList).then(res => {
+        this.newData = res.data;
+      })
+    },
+    getTime: function (date) {
+      return date.split(' ')[0];
+    },
     getData: function (page) {
       this.form.PageSize = this.pageSize;
       this.form.CurPage = page;
@@ -42,7 +48,6 @@ export default {
       val.forEach(t => {
         this.multipleSelection.push(t.id);
       })
-      console.log(this.multipleSelection)
     },
     commitDelete: function (id) {
       this.$confirm('确定删除该任务吗？', '提示', {confirmButtonText: '确认', cancelButtonText: '取消', type: 'warning'}).then(() => {
