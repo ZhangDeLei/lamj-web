@@ -6,7 +6,9 @@
           <div class="title">
             <span class="name">队伍架构</span>
           </div>
-          <div class="cont"></div>
+          <div class="cont">
+
+          </div>
         </div>
       </div>
       <div class="col-sm-4">

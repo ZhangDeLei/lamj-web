@@ -27,8 +27,8 @@
       class="page-list"
       :data="userData.list">
       <el-table-column
-        label="名称"
-        prop="nickName">
+        label="队伍"
+        prop="teamName">
       </el-table-column>
       <el-table-column
         label="账号"
@@ -61,7 +61,8 @@
           </el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="160">
+      <el-table-column width="160" label="最后一次登录时间" prop="lastLoginTime"></el-table-column>
+      <el-table-column label="操作" width="120">
         <template slot-scope="scope">
           <el-button-group>
             <el-button size="mini" round type="danger" @click="confirmDeleteMenu(scope.row.id)"
