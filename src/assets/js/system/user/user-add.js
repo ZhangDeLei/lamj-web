@@ -1,6 +1,6 @@
 import httpReq from '../../../plugins/http/httpService'
 import api from '../../../plugins/http/api'
-import axios from 'axios'
+import * as types from '../../../../store/types'
 
 export default {
   name: "user-add",
@@ -98,6 +98,7 @@ export default {
           } else {
             var formData = new FormData();
             formData.append('file', this.imageFile);
+            formData.append('type', types.File_Type_Photo);
             httpReq.upload(api.url_fileUpload, formData).then(res => {
               if (res.data.code == 100) {
                 _this.form.photoUrl = res.data.data;

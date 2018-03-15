@@ -1,6 +1,7 @@
 import api from "../../../plugins/http/api";
 import httpReq from "../../../plugins/http/httpService";
 import store from '../../../../store/store'
+import * as types from '../../../../store/types'
 
 export default {
   name: "team-user-edit",
@@ -91,6 +92,7 @@ export default {
           } else {
             var formData = new FormData();
             formData.append('file', this.imageFile);
+            formData.append('type', types.File_Type_Photo);
             httpReq.upload(api.url_fileUpload, formData).then(res => {
               if (res.data.code == 100) {
                 _this.form.photoUrl = res.data.data;
