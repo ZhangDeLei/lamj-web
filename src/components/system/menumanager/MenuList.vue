@@ -9,6 +9,7 @@
     </div>
     <div class="table-list">
       <el-table
+        size="mini"
         :data="menuList">
         <el-table-column type="expand">
           <template slot-scope="props">

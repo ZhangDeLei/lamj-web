@@ -24,6 +24,7 @@
       </el-form>
     </div>
     <el-table
+      size="mini"
       class="table-list"
       :data="userData.list">
       <el-table-column

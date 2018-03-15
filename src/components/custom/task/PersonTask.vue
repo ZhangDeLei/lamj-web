@@ -2,9 +2,6 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <router-link :to="{name:'task-add',query:{name:'发布新任务'}}">
-        <el-button type="primary" class="pri-button">发布新任务</el-button>
-      </router-link>
     </div>
     <div class="searchContent">
       <el-form :inline="true" :model="form" class="demo-form-inline">
@@ -68,16 +65,14 @@
         label="操作">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button round icon="el-icon-delete" type="danger" @click="commitDelete(scope.row.id)" size="mini"/>
             <el-button round icon="el-icon-document" @click="openPage(scope.row.url)" type="success" size="mini"/>
-            <el-button round icon="el-icon-edit-outline" @click="openEditPage(scope.row.id)" type="primary"
+            <el-button round icon="el-icon-circle-check-outline" type="primary"
                        size="mini"/>
           </el-button-group>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-button class="batch-btn" @click="batchCommitDelete" type="danger" size="mini">批量删除</el-button>
     <el-pagination
       class="page"
       :page-size="taskData.pageSize"
@@ -88,8 +83,8 @@
   </div>
 </template>
 
-<script src="../../../assets/js/custom/task/task.js"></script>
+<script src="../../../assets/js/custom/task/person-task.js"></script>
 
 <style scoped>
-  @import "../../../assets/css/custom/task/task.css";
+  @import "../../../assets/css/custom/task/person-task.css";
 </style>

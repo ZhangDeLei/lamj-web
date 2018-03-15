@@ -10,15 +10,21 @@ export default {
       taskData: {},
       pageSize: 10,
       multipleSelection: [],
-      newData: []
+      newData: [],
+      stageData: []
     }
   },
-  computed: {},
   mounted() {
     this.getData(1);
     this.getNewData();
+    this.getStageData();
   },
   methods: {
+    getStageData: function () {
+      httpReq.get(api.url_getDictListByEnName, {EnName: "Staged"}).then(res => {
+        this.stageData = res.data;
+      })
+    },
     getNewData: function () {
       httpReq.get(api.url_getAllNewAuthList).then(res => {
         this.newData = res.data;
@@ -31,6 +37,7 @@ export default {
       this.form.PageSize = this.pageSize;
       this.form.CurPage = page;
       this.form.CompanyId = store.state.user.companyId;
+      console.log(this.form)
       httpReq.get(api.url_getTaskList, this.form).then(res => {
         this.taskData = res.data;
       })

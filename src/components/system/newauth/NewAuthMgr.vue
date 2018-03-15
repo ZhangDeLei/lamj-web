@@ -22,6 +22,7 @@
       </el-form>
     </div>
     <el-table
+      size="mini"
       :data="newData.list"
       class="page-list">
       <el-table-column

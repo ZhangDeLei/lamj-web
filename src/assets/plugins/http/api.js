@@ -48,7 +48,7 @@ const api = {
   url_updateCompany: 'company/update',//修改企业
   url_deleteCompany: 'company/delete',//删除企业
   url_insertCompanyNew: 'company/insertCompanyNew',//新增企业新闻客户端
-  url_deleteCompanyNewByCompanyIdAndNewId:'company/deleteCompanyNewByCompanyIdAndNewId',//根据企业ID和客户端ID删除新闻与企业的关联关系
+  url_deleteCompanyNewByCompanyIdAndNewId: 'company/deleteCompanyNewByCompanyIdAndNewId',//根据企业ID和客户端ID删除新闻与企业的关联关系
 
   url_getTeamListByCompanyId: 'team/getTeamListByCompanyId',//根据企业ID获取企业的队伍列表
   url_getTeamList: 'team/getTeamList',//分页查询队伍列表
@@ -77,6 +77,7 @@ const api = {
   url_getTaskList: 'task/getTaskList',//获取任务列表
   url_insertTask: 'task/insert',//新增任务
   url_updateTask: 'task/update',//更新任务
+  url_getTaskListByUserId: 'task/getTaskListByUserId',//根据用户ID获取任务列表
 
   url_fileUpload: 'file/fileUpload'//文件上传
 }

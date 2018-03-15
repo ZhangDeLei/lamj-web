@@ -24,6 +24,7 @@
       </el-form>
     </div>
     <el-table
+      size="mini"
       class="page-list"
       :data="companyData.list">
       <el-table-column

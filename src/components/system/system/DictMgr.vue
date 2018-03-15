@@ -22,6 +22,7 @@
       </el-form>
     </div>
     <el-table
+      size="mini"
       :data="dictData.list"
       class="table-list">
       <el-table-column

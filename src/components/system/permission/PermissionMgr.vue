@@ -5,6 +5,7 @@
       <el-button type="primary" class="pri-button" @click="showInsertDialog">新增权限</el-button>
     </div>
     <el-table
+      size="mini"
       :data="permissionData.list"
       class="table-list">
       <el-table-column

@@ -15,6 +15,7 @@
       </el-form>
     </div>
     <el-table
+      size="mini"
       class="page-list"
       :data="teamData">
       <el-table-column

@@ -23,7 +23,17 @@ import TeamUserEdit from '@/components/custom/team/TeamUserEdit'
 import CaliberList from '@/components/custom/caliber/CaliberList'
 import TaskEdit from '@/components/custom/task/TaskEdit'
 import TaskMgr from '@/components/custom/task/TaskMgr'
+import PersonTask from '@/components/custom/task/PersonTask'
+import ArticleList from '@/components/custom/article/ArticleList'
+import ArticleEdit from '@/components/custom/article/ArticleEdit'
+import Examine from '@/components/custom/comment/Examine'
+import SubmissionList from '@/components/custom/comment/SubmissionList'
+import SubmissionEdit from '@/components/custom/comment/SubmissionEdit'
 import PatrolList from '@/components/custom/patrol/PatrolList'
+import IntegralList from '@/components/custom/integral/IntegralList'
+import IntegralEdit from '@/components/custom/integral/IntegralEdit'
+import IntegralRule from '@/components/custom/integral/IntegralRule'
+import IntegralPerson from '@/components/custom/integral/IntegralPerson'
 
 import store from "../store/store"
 
@@ -48,8 +58,13 @@ const routes = [
       {path: '/menu-edit/:id', name: 'menu-edit', component: MenuInsert, meta: {requireAuth: true}},
       {path: '/permission', name: 'permission', component: PermissionMgr, meta: {requireAuth: true}},
       {path: '/company-mgr', name: 'company-mgr', component: CompanyMgr, meta: {requireAuth: true}},
-      {path: '/company/company-team-mgr', name: 'company-team-mgr', component: CompanyTeamMgr, meta: {requireAuth: true} },
-      {path: '/company/company-new-mgr', name: 'company-new-mgr', component: CompanyNewMgr, meta: {requireAuth: true} },
+      {
+        path: '/company/company-team-mgr',
+        name: 'company-team-mgr',
+        component: CompanyTeamMgr,
+        meta: {requireAuth: true}
+      },
+      {path: '/company/company-new-mgr', name: 'company-new-mgr', component: CompanyNewMgr, meta: {requireAuth: true}},
       {path: '/user', name: 'user', component: UserMgr, meta: {requireAuth: true}},
       {path: '/user/user-add', name: 'user-add', component: UserAdd, meta: {requireAuth: true}},
       {path: '/user/user-edit/:id', name: 'user-edit', component: UserAdd, meta: {requireAuth: true}},
@@ -75,7 +90,17 @@ const routes = [
       {path: '/task/task-add', name: 'task-add', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-edit/:id', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-list', name: 'task-list', component: TaskMgr, meta: {requireAuth: true}},
+      {path: '/task/person-task', name: 'person-task', component: PersonTask, meta: {requireAuth: true}},
       {path: '/patrol/patrol-list', name: 'patrol-list', component: PatrolList, meta: {requireAuth: true}},
+      {path: '/article/article-list', name: 'article-list', component: ArticleList, meta: {requireAuth: true}},
+      {path: '/article/article-edit', name: 'article-edit', component: ArticleEdit, meta: {requireAuth: true}},
+      {path: '/comment/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
+      {path: '/comment/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
+      {path: '/comment/submission-edit', name: 'submission-edit', component: SubmissionEdit, meta: {requireAuth: true}},
+      {path: '/integral/integral-list', name: 'integral-list', component: IntegralList, meta: {requireAuth: true}},
+      {path: '/integral/integral-edit', name: 'integral-edit', component: IntegralEdit, meta: {requireAuth: true}},
+      {path: '/integral/integral-rule', name: 'integral-rule', component: IntegralRule, meta: {requireAuth: true}},
+      {path: '/integral/integral-person', name: 'integral-person', component: IntegralPerson, meta: {requireAuth: true}},
     ]
   }
 ];
