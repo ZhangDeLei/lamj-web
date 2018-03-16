@@ -1,8 +1,1 @@
 @import "../../common.css";
-input[type=file]{display: none}
-.selectImage{background-color: #00c1de;border-radius: 5px;height: 30px; line-height: 30px;padding-right:10px;padding-left:10px;text-align: center;color: white;}
-.selectImage:hover{background-color: #1b6d85;}
-.tip{color: gray;}
-.fileinfo{height: 30px;line-height: 30px;padding-left: 10px;width: 300px;padding-right: 10px;}
-.fileinfo:hover{background-color: #dddddd;}
-.el-icon-circle-close-outline{position: relative;float: right;top:25%;cursor: pointer;}

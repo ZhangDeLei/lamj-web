@@ -2,9 +2,6 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
-      <router-link :to="{name:'article-edit',query:{name:'新增文章'}}">
-        <el-button type="primary" class="pri-button">新增文章</el-button>
-      </router-link>
     </div>
     <div class="searchContent">
       <el-form :inline="true" :model="form" class="demo-form-inline">
@@ -47,7 +44,6 @@
       <el-table-column label="类别" prop="typeName"/>
       <el-table-column label="创建人" prop="createUserName"/>
       <el-table-column label="创建时间" prop="createTime"/>
-      <el-table-column label="操作"></el-table-column>
     </el-table>
 
     <el-pagination
@@ -60,8 +56,8 @@
   </div>
 </template>
 
-<script src="../../../assets/js/custom/article/article-list.js"></script>
+<script src="../../../assets/js/custom/article/article-browse.js"></script>
 
 <style scoped>
-  @import "../../../assets/css/custom/article/article-list.css";
+  @import "../../../assets/css/custom/article/article-browse.css";
 </style>

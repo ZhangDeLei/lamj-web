@@ -1,5 +1,5 @@
 export default {
-  name: "article-list",
+  name: "article-browse",
   data() {
     return {
       articleData: {},

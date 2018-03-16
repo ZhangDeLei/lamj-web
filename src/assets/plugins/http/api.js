@@ -79,6 +79,16 @@ const api = {
   url_updateTask: 'task/update',//更新任务
   url_getTaskListByUserId: 'task/getTaskListByUserId',//根据用户ID获取任务列表
 
+  url_deleteSubmission: 'submission/delete',//删除投稿
+  url_insertSubmission: 'submission/insert',//新增投稿
+  url_updateSubmission: 'submission/update',//更新投稿
+  url_getSubmissionById: 'submission/getSubmissionById',//根据ID获取最新的投稿信息
+  url_getSubmissionList: 'submission/getSubmissionList',//获取投稿列表（用于投稿审核）
+  url_getSubmissionListByUserId: 'submission/getSubmissionListByUserId',//获取跟人投稿记录
+
+  url_adoptSubmission: 'submissionAudit/adopt',//审核通过
+  url_backSubmission: 'submissionAudit/back',//审核不通过
+
   url_fileUpload: 'file/fileUpload'//文件上传
 }
 export default api;

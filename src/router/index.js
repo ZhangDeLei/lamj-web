@@ -26,6 +26,7 @@ import TaskMgr from '@/components/custom/task/TaskMgr'
 import PersonTask from '@/components/custom/task/PersonTask'
 import ArticleList from '@/components/custom/article/ArticleList'
 import ArticleEdit from '@/components/custom/article/ArticleEdit'
+import ArticleBrowse from '@/components/custom/article/ArticleBrowse'
 import Examine from '@/components/custom/comment/Examine'
 import SubmissionList from '@/components/custom/comment/SubmissionList'
 import SubmissionEdit from '@/components/custom/comment/SubmissionEdit'
@@ -86,7 +87,12 @@ const routes = [
       {path: '/team/team-user-mgr', name: 'team-user-mgr', component: TeamUserMgr, meta: {requireAuth: true}},
       {path: '/team/team-user-edit', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
       {path: '/team/team-user-edit/:id', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},
-      {path: '/caliber/caliber-list', name: 'caliber-list', component: CaliberList, meta: {requireAuth: true}},
+      {
+        path: '/caliber/caliber-list',
+        name: 'caliber-list',
+        component: CaliberList,
+        meta: {requireAuth: true}
+      },
       {path: '/task/task-add', name: 'task-add', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-edit/:id', name: 'task-edit', component: TaskEdit, meta: {requireAuth: true}},
       {path: '/task/task-list', name: 'task-list', component: TaskMgr, meta: {requireAuth: true}},
@@ -94,13 +100,20 @@ const routes = [
       {path: '/patrol/patrol-list', name: 'patrol-list', component: PatrolList, meta: {requireAuth: true}},
       {path: '/article/article-list', name: 'article-list', component: ArticleList, meta: {requireAuth: true}},
       {path: '/article/article-edit', name: 'article-edit', component: ArticleEdit, meta: {requireAuth: true}},
+      {path: '/article/article-browse', name: 'article-browse', component: ArticleBrowse, meta: {requireAuth: true}},
       {path: '/comment/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
       {path: '/comment/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
       {path: '/comment/submission-edit', name: 'submission-edit', component: SubmissionEdit, meta: {requireAuth: true}},
+      {path: '/comment/submission-add/:id', name: 'submission-add', component: SubmissionEdit, meta: {requireAuth: true}},
       {path: '/integral/integral-list', name: 'integral-list', component: IntegralList, meta: {requireAuth: true}},
       {path: '/integral/integral-edit', name: 'integral-edit', component: IntegralEdit, meta: {requireAuth: true}},
       {path: '/integral/integral-rule', name: 'integral-rule', component: IntegralRule, meta: {requireAuth: true}},
-      {path: '/integral/integral-person', name: 'integral-person', component: IntegralPerson, meta: {requireAuth: true}},
+      {
+        path: '/integral/integral-person',
+        name: 'integral-person',
+        component: IntegralPerson,
+        meta: {requireAuth: true}
+      },
     ]
   }
 ];

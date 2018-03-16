@@ -1,3 +1,14 @@
 export default {
-  name: "article-edit"
+  name: "article-edit",
+  data() {
+    return {
+      form: {},
+      rules: {}
+    }
+  },
+  methods: {
+    onSubmit: function () {
+
+    }
+  }
 }

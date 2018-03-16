@@ -116,7 +116,6 @@ export default {
     insertUser: function () {
       var url = this.isUpdate ? api.url_updateUser : api.url_insertUser;
       httpReq.post(url, this.form).then(r => {
-        console.log(r)
         if (r.code == 100) {
           this.$message.success(this.isUpdate ? "修改成功" : "新增成功");
           this.form = {};
