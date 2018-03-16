@@ -89,6 +89,13 @@ const api = {
   url_adoptSubmission: 'submissionAudit/adopt',//审核通过
   url_backSubmission: 'submissionAudit/back',//审核不通过
 
+  url_deleteArticle: 'article/delete',//删除文章
+  url_getArticleById: 'article/getArticleById',//根据ID获取文章详细信息
+  url_getArticleList: 'article/getArticleList',//获取文章列表
+  url_getArticleListByUserId: 'article/getArticleListByUserId',//根据用户获取文章列表
+  url_insertArticle: 'article/insert',//新增文章
+  url_updateArticle: 'article/update',//更新文章
+
   url_fileUpload: 'file/fileUpload'//文件上传
 }
 export default api;

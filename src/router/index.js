@@ -100,6 +100,7 @@ const routes = [
       {path: '/patrol/patrol-list', name: 'patrol-list', component: PatrolList, meta: {requireAuth: true}},
       {path: '/article/article-list', name: 'article-list', component: ArticleList, meta: {requireAuth: true}},
       {path: '/article/article-edit', name: 'article-edit', component: ArticleEdit, meta: {requireAuth: true}},
+      {path: '/article/article-add/:id', name: 'article-add', component: ArticleEdit, meta: {requireAuth: true}},
       {path: '/article/article-browse', name: 'article-browse', component: ArticleBrowse, meta: {requireAuth: true}},
       {path: '/comment/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
       {path: '/comment/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
