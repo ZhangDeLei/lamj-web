@@ -9,13 +9,16 @@ export default {
     return {
       form: {},
       articleFile: {},
+      levelData: [],
       rules: {
         themeName: [{required: true, message: '请输入主题'}],
-        title: [{required: true, message: '请输入标题'}]
+        title: [{required: true, message: '请输入标题'}],
+        levelId: [{required: true, message: '请选择级别'}]
       }
     }
   },
   mounted() {
+    this.getDictList();
     if (this.$route.params.id) {
       this.updateUI();
     }
@@ -24,6 +27,11 @@ export default {
     "$router": "updateUI"
   },
   methods: {
+    getDictList: function () {
+      httpReq.get(api.url_getDictListByEnName, {EnName: 'Submission_Level'}).then(res => {
+        this.levelData = res.data;
+      })
+    },
     updateUI: function () {
       httpReq.get(api.url_getSubmissionById, {Id: this.$route.params.id}).then(res => {
         if (res.code == 100) {
@@ -78,6 +86,13 @@ export default {
       } else {
         this.$message.warning('当前文件类型不正确')
       }
+    },
+    levelChange: function () {
+      var obj = this.levelData.filter(t => {
+        return t.id == this.form.levelId;
+      })[0]
+      this.form.levelCode = obj.code;
+      this.form.levelName = obj.label;
     },
     removeFile: function () {
       this.articleFile = {};

@@ -8,13 +8,20 @@ export default {
     return {
       submissionData: {},
       form: {},
+      levelData: [],
       pageSize: 10
     }
   },
   mounted() {
     this.getData(1);
+    this.getDictList();
   },
   methods: {
+    getDictList: function () {
+      httpReq.get(api.url_getDictListByEnName, {EnName: 'Submission_Level'}).then(res => {
+        this.levelData = res.data;
+      })
+    },
     getData: function (pages) {
       this.form.CompanyId = store.state.user.companyId;
       this.form.UserId = store.state.user.id;

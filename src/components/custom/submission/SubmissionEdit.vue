@@ -13,6 +13,11 @@
       <el-form-item label="文章地址">
         <el-input v-model="form.url" placeholder="请输入文章地址"/>
       </el-form-item>
+      <el-form-item label="级别" prop="levelId">
+        <el-select v-model="form.levelId" placeholder="请选择级别" clearable @change="levelChange">
+          <el-option v-for="item in levelData" :key="item.id" :label="item.label" :value="item.id"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="退回原因" v-if="form.process">
         {{form.process.comment}}
       </el-form-item>

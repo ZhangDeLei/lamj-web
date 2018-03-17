@@ -27,9 +27,9 @@ import PersonTask from '@/components/custom/task/PersonTask'
 import ArticleList from '@/components/custom/article/ArticleList'
 import ArticleEdit from '@/components/custom/article/ArticleEdit'
 import ArticleBrowse from '@/components/custom/article/ArticleBrowse'
-import Examine from '@/components/custom/comment/Examine'
-import SubmissionList from '@/components/custom/comment/SubmissionList'
-import SubmissionEdit from '@/components/custom/comment/SubmissionEdit'
+import Examine from '@/components/custom/submission/Examine'
+import SubmissionList from '@/components/custom/submission/SubmissionList'
+import SubmissionEdit from '@/components/custom/submission/SubmissionEdit'
 import PatrolList from '@/components/custom/patrol/PatrolList'
 import IntegralList from '@/components/custom/integral/IntegralList'
 import IntegralEdit from '@/components/custom/integral/IntegralEdit'
@@ -102,10 +102,10 @@ const routes = [
       {path: '/article/article-edit', name: 'article-edit', component: ArticleEdit, meta: {requireAuth: true}},
       {path: '/article/article-add/:id', name: 'article-add', component: ArticleEdit, meta: {requireAuth: true}},
       {path: '/article/article-browse', name: 'article-browse', component: ArticleBrowse, meta: {requireAuth: true}},
-      {path: '/comment/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
-      {path: '/comment/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
-      {path: '/comment/submission-edit', name: 'submission-edit', component: SubmissionEdit, meta: {requireAuth: true}},
-      {path: '/comment/submission-add/:id', name: 'submission-add', component: SubmissionEdit, meta: {requireAuth: true}},
+      {path: '/submission/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
+      {path: '/submission/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
+      {path: '/submission/submission-edit', name: 'submission-edit', component: SubmissionEdit, meta: {requireAuth: true}},
+      {path: '/submission/submission-add/:id', name: 'submission-add', component: SubmissionEdit, meta: {requireAuth: true}},
       {path: '/integral/integral-list', name: 'integral-list', component: IntegralList, meta: {requireAuth: true}},
       {path: '/integral/integral-edit', name: 'integral-edit', component: IntegralEdit, meta: {requireAuth: true}},
       {path: '/integral/integral-rule', name: 'integral-rule', component: IntegralRule, meta: {requireAuth: true}},

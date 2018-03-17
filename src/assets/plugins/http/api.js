@@ -15,6 +15,7 @@ const api = {
   url_insertGroupAndPermission: 'user/insertGroupAndPermission',//新增用户组、权限与用户的关联关系
   url_getAllUser: 'user/getAllUser',//获取所有用户列表
   url_insertCustom: 'user/insertCustom',//新增业务用户
+  url_getAllUserListByCompanyId: 'user/getAllUserListByCompanyId',//获取企业的所有用户列表
 
   url_getMenuListByUserId: 'menu/getMenuListByUserId',//根据用户ID获取菜单列表
   url_getMenuListByTree: 'menu/getMenuListByTree',//获取菜单树形列表
@@ -95,6 +96,14 @@ const api = {
   url_getArticleListByUserId: 'article/getArticleListByUserId',//根据用户获取文章列表
   url_insertArticle: 'article/insert',//新增文章
   url_updateArticle: 'article/update',//更新文章
+
+  url_getIntegralRecordByUserId: 'integralRecord/getIntegralRecordByUserId',//个人积分查询
+  url_getIntegralRecordByCompany: 'integralRecord/getIntegralRecordByCompany',//企业用户积分查询
+  url_getIntegralRecordByTaskId: 'integralRecord/url_getIntegralRecordByTaskId',//根据任务ID查询积分记录
+  url_getIntegralRecordByTaskIdAndUserId: 'integralRecord/getIntegralRecordByTaskIdAndUserId',//根据任务ID及用户ID查询积分记录
+  url_getIntegralRecordBySubmissionId: 'integralRecord/getIntegralRecordBySubmissionId',//根据投稿ID查询积分记录
+  url_insertIntegralRecord: 'integralRecord/insert',//新增积分
+  url_reduce: 'integralRecord/reduce',//核减积分
 
   url_fileUpload: 'file/fileUpload'//文件上传
 }

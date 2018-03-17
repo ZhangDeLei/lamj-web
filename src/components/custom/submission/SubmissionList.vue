@@ -14,8 +14,13 @@
         <el-form-item label="标题">
           <el-input v-model="form.Title" style="width: 150px;" clearable placeholder="标题"></el-input>
         </el-form-item>
+        <el-form-item label="级别">
+          <el-select v-model="form.LevelId" clearable placeholder="请选择级别">
+            <el-option v-for="item in levelData" :key="item.id" :label="item.label" :value="item.id"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="状态">
-          <el-select v-model="form.Status" clearable placeholder="请选择">
+          <el-select v-model="form.Status" style="width: 100px;" clearable placeholder="请选择状态">
             <el-option label="已审核" value="1"/>
             <el-option label="未审核" value="0"/>
           </el-select>
@@ -32,6 +37,7 @@
       <el-table-column label="日期" prop="createTime"/>
       <el-table-column label="主题" prop="themeName"/>
       <el-table-column label="标题" prop="title"/>
+      <el-table-column label="级别" prop="levelName"/>
       <el-table-column label="审核进程" prop="process.processName"/>
       <el-table-column label="操作">
         <template slot-scope="scope">

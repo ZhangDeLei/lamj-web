@@ -12,13 +12,20 @@ export default {
       dialogConfirm: false,
       currentId: '',
       isSuccess: false,
-      confirmForm: {}
+      levelData: [],
+      confirmForm: {},
     }
   },
   mounted() {
     this.getData(1)
+    this.getDictList()
   },
   methods: {
+    getDictList: function () {
+      httpReq.get(api.url_getDictListByEnName, {EnName: 'Submission_Level'}).then(res => {
+        this.levelData = res.data;
+      })
+    },
     getData: function (pages) {
       this.form.CompanyId = store.state.user.companyId;
       this.form.PageSize = this.pageSize;
