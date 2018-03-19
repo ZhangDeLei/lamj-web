@@ -25,10 +25,12 @@
       class="page-list"
       :data="integralData.list">
       <el-table-column label="用户名称" prop="userName"/>
-      <el-table-column label="积分" prop="integral"/>
-      <el-table-column label="来源" prop="sourceName"/>
-      <el-table-column label="新增时间" prop="createTime"/>
-      <el-table-column label="操作"></el-table-column>
+      <el-table-column label="总积分" prop="totalIntegral"/>
+      <!--<el-table-column label="操作">-->
+        <!--<template slot-scope="scope">-->
+          <!--<el-button round size="mini" type="primary" @click="showDetail(scope.row.id)">查看</el-button>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
     </el-table>
 
     <el-pagination
@@ -38,6 +40,7 @@
       :total="integralData.total"
       @current-change="handleCurrentChange">
     </el-pagination>
+
   </div>
 </template>
 

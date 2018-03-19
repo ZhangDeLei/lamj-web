@@ -2,3 +2,6 @@
 .page-list{top:110px;}
 .green{color: #67C23A}
 .danger{color:#F56C6C}
+.total_integral{position:relative;float: right;top:10%;right: 20px;}
+.total_integral .label{font-size: 20px;color: black;}
+.total_integral .integral{color: green;font-size: 30px;}

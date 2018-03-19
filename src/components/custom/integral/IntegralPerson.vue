@@ -2,6 +2,10 @@
   <div class="content">
     <div class="crumb">
       <span class="title">{{this.$route.query.name}}</span>
+      <div class="total_integral">
+        <label class="label">总积分：</label>
+        <label class="integral">{{integralData.total}}</label>
+      </div>
     </div>
     <div class="searchContent">
       <el-form :inline="true" :model="form" class="demo-form-inline">
@@ -18,7 +22,7 @@
     <el-table
       size="mini"
       class="page-list"
-      :data="integralData.list">
+      :data="integralData.mPageInfo.list">
       <el-table-column label="积分" prop="integral">
         <template slot-scope="scope">
           <label v-if="scope.row.integral>=0" class="green">+{{scope.row.integral}}</label>
@@ -31,9 +35,9 @@
 
     <el-pagination
       class="page"
-      :page-size="integralData.pageSize"
+      :page-size="integralData.mPageInfo.pageSize"
       layout="total, prev, pager, next"
-      :total="integralData.total"
+      :total="integralData.mPageInfo.total"
       @current-change="handleCurrentChange">
     </el-pagination>
   </div>

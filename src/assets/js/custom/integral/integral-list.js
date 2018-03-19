@@ -10,6 +10,7 @@ export default {
       sourceList: [],
       userList: [],
       form: {},
+      dialogDetailShow: false,
       pageSize: 10
     }
   },
@@ -43,5 +44,8 @@ export default {
     onSearch: function () {
       this.getData(1)
     }
+    // showDetail: function (id) {
+    //   this.dialogDetailShow = true;
+    // }
   }
 }
