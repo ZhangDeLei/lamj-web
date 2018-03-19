@@ -7,7 +7,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="地址" prop="url">
-            <el-input placeholder="请输入地址" v-model="form.url"/>
+            <el-input placeholder="请输入地址" v-model="form.url" @keyup.enter.native="getArticleTitle()"/>
           </el-form-item>
           <el-form-item label="标题" prop="title">
             <el-input placeholder="请输入标题" v-model="form.title"/>

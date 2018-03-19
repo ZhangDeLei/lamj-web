@@ -135,6 +135,8 @@ export default {
         list.push({id: t});
       })
       return list;
+    },
+    getArticleTitle:function () {
     }
   }
 }
