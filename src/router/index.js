@@ -15,6 +15,7 @@ import DataMonitor from '@/components/system/system/DataMonitor'
 import DictMgr from '@/components/system/system/DictMgr'
 import CaliberMgr from '@/components/system/caliber/CaliberMgr'
 import NewAuthMgr from '@/components/system/newauth/NewAuthMgr'
+import AppManager from '@/components/system/appmanager/AppManager'
 
 import CustomMain from '@/components/views/CustomMain'
 import TeamMgr from '@/components/custom/team/TeamMgr'
@@ -73,6 +74,7 @@ const routes = [
       {path: '/system/dict-mgr', name: 'dict-mgr', component: DictMgr, meta: {requireAuth: true}},
       {path: '/system/cailber-mgr', name: 'cailber-mgr', component: CaliberMgr, meta: {requireAuth: true}},
       {path: '/system/new-auth-mgr', name: 'new-auth-mgr', component: NewAuthMgr, meta: {requireAuth: true}},
+      {path: '/appmanager/app-manager', name: 'app-manager', component: AppManager, meta: {requireAuth: true}}
     ]
   },
   {
@@ -104,8 +106,18 @@ const routes = [
       {path: '/article/article-browse', name: 'article-browse', component: ArticleBrowse, meta: {requireAuth: true}},
       {path: '/submission/examine', name: 'examine', component: Examine, meta: {requireAuth: true}},
       {path: '/submission/submission', name: 'submission', component: SubmissionList, meta: {requireAuth: true}},
-      {path: '/submission/submission-edit', name: 'submission-edit', component: SubmissionEdit, meta: {requireAuth: true}},
-      {path: '/submission/submission-add/:id', name: 'submission-add', component: SubmissionEdit, meta: {requireAuth: true}},
+      {
+        path: '/submission/submission-edit',
+        name: 'submission-edit',
+        component: SubmissionEdit,
+        meta: {requireAuth: true}
+      },
+      {
+        path: '/submission/submission-add/:id',
+        name: 'submission-add',
+        component: SubmissionEdit,
+        meta: {requireAuth: true}
+      },
       {path: '/integral/integral-list', name: 'integral-list', component: IntegralList, meta: {requireAuth: true}},
       {path: '/integral/integral-edit', name: 'integral-edit', component: IntegralEdit, meta: {requireAuth: true}},
       {path: '/integral/integral-rule', name: 'integral-rule', component: IntegralRule, meta: {requireAuth: true}},

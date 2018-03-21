@@ -105,6 +105,12 @@ const api = {
   url_insertIntegralRecord: 'integralRecord/insert',//新增积分
   url_reduce: 'integralRecord/reduce',//核减积分
 
+  url_deleteApp: 'appManager/delete',//删除应用记录
+  url_getAppByNew: 'appManager/getAppByNew',//获取最新的APP信息
+  url_getAppList: 'appManager/getAppList',//获取APP应用列表
+  url_insertApp: 'appManager/insert',//新增应用记录
+  url_updateApp: 'appManager/update',//更新应用记录
+
   url_fileUpload: 'file/fileUpload'//文件上传
 }
 export default api;
