@@ -1,5 +1,6 @@
 import httpReq from '../../../plugins/http/httpService'
 import api from '../../../plugins/http/api'
+import * as types from "../../../../store/types";
 
 export default {
   name: "new-auth-mgr",
@@ -12,6 +13,7 @@ export default {
       dialogEditShow: false,
       Oprs: [],
       checkOprs: [],
+      iconFile: {},
       rules: {
         name: [{required: true, message: '请输入名称'}]
       }
@@ -62,19 +64,36 @@ export default {
       var _this = this;
       this.$refs['editForm'].validate(function (v) {
         if (v) {
-          var url = _this.editForm.id ? api.url_updateNewAuth : api.url_insertNewAuth;
-          _this.editForm.oprs = _this.convertNewOpr(_this.editForm.name);
-          httpReq.post(url, _this.editForm).then(res => {
-            if (res.code == 100) {
-              _this.dialogEditShow = false;
-              _this.$message.success('操作成功')
-              _this.getData(1);
-            } else {
-              _this.$message.error('操作失败')
-            }
-          })
+          if (!_this.iconFile.name) {
+            _this.editCommit();
+          } else {
+            var formData = new FormData();
+            formData.append('file', _this.iconFile);
+            formData.append('type', types.File_Type_Newicon);
+            httpReq.upload(api.url_fileUpload, formData).then(res => {
+              if (res.data.code == 100) {
+                _this.editForm.icon = res.data.data;
+                _this.editCommit();
+              } else {
+                _this.$message.error(res.data.msg)
+              }
+            });
+          }
         }
       });
+    },
+    editCommit: function () {
+      var url = this.editForm.id ? api.url_updateNewAuth : api.url_insertNewAuth;
+      this.editForm.oprs = this.convertNewOpr(this.editForm.name);
+      httpReq.post(url, this.editForm).then(res => {
+        if (res.code == 100) {
+          this.dialogEditShow = false;
+          this.$message.success('操作成功')
+          this.getData(1);
+        } else {
+          this.$message.error('操作失败')
+        }
+      })
     },
     convertNewOpr: function (name) {
       var oprs = [];
@@ -86,6 +105,18 @@ export default {
         oprs.push({newName: name, oprTypeId: o.id, oprTypeCode: o.code, oprTypeName: o.label});
       })
       return oprs;
+    },
+    changeFile: function (event) {
+      var file = event.currentTarget.files[0];
+      var fileType = ['png', 'jpg'];
+      if (fileType.indexOf(file.type.split('/')[1]) > -1) {
+        this.iconFile = file;
+      } else {
+        this.$message.warning('当前文件类型不正确')
+      }
+    },
+    removeFile: function () {
+      this.iconFile = {};
     }
   }
 }

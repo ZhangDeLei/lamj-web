@@ -97,7 +97,7 @@ export default {
             _this.insertUser();
           } else {
             var formData = new FormData();
-            formData.append('file', this.imageFile);
+            formData.append('file', _this.imageFile);
             formData.append('type', types.File_Type_Photo);
             httpReq.upload(api.url_fileUpload, formData).then(res => {
               if (res.data.code == 100) {

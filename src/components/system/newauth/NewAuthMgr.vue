@@ -84,15 +84,15 @@
             <el-form-item label="重定向地址">
               <el-input v-model="editForm.redirectUrl"></el-input>
             </el-form-item>
-            <el-form-item label="操作">
-              <el-select v-model="checkOprs" multiple placeholder="请选择">
-                <el-option
-                  v-for="item in Oprs"
-                  :key="item.id"
-                  :label="item.label"
-                  :value="item.id">
-                </el-option>
-              </el-select>
+            <el-form-item label="图标">
+              <div>
+                <label class="selectImage" for="iconFile">选择文件</label>
+                <input type="file" id="iconFile" @change="changeFile"/>
+                <span class="tip">只能上传jpg/png文件，且不超过1m</span>
+              </div>
+              <div class="fileinfo" v-if="iconFile.name">
+                {{iconFile.name}}<i class="el-icon-circle-close-outline" @click="removeFile"></i>
+              </div>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -110,6 +110,16 @@
             </el-form-item>
             <el-form-item label="工厂类">
               <el-input v-model="editForm.cls"></el-input>
+            </el-form-item>
+            <el-form-item label="操作">
+              <el-select v-model="checkOprs" multiple placeholder="请选择">
+                <el-option
+                  v-for="item in Oprs"
+                  :key="item.id"
+                  :label="item.label"
+                  :value="item.id">
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
