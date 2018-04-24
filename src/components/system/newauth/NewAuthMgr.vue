@@ -26,6 +26,12 @@
       :data="newData.list"
       class="page-list">
       <el-table-column
+      label="图标">
+        <template slot-scope="scope">
+          <img :src="baseUrl+scope.row.icon" width="30dp" height="30dp"/>
+        </template>
+      </el-table-column>
+      <el-table-column
         label="名称"
         prop="name">
       </el-table-column>

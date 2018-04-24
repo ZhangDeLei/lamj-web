@@ -5,6 +5,7 @@ export default {
   name: "company-new-mgr",
   data() {
     return {
+      baseUrl:api.url_host,
       searchForm: {},
       editForm: {Ids: []},
       CompanyList: [],

@@ -6,6 +6,7 @@ export default {
   name: "new-auth-mgr",
   data() {
     return {
+      baseUrl: api.url_host,
       form: {},
       editForm: {},
       newData: {},
