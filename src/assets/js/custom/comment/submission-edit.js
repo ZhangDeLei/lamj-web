@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getDictList: function () {
-      httpReq.get(api.url_getDictListByEnName, {EnName: 'Submission_Level'}).then(res => {
+      httpReq.get(api.url_getArticleLevelList, {CompanyId: store.state.user.companyId, Status: true}).then(res => {
         this.levelData = res.data;
       })
     },
@@ -91,8 +91,7 @@ export default {
       var obj = this.levelData.filter(t => {
         return t.id == this.form.levelId;
       })[0]
-      this.form.levelCode = obj.code;
-      this.form.levelName = obj.label;
+      this.form.levelName = obj.name;
     },
     removeFile: function () {
       this.articleFile = {};

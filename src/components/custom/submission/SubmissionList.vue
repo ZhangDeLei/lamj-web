@@ -16,7 +16,7 @@
         </el-form-item>
         <el-form-item label="级别">
           <el-select v-model="form.LevelId" clearable placeholder="请选择级别">
-            <el-option v-for="item in levelData" :key="item.id" :label="item.label" :value="item.id"></el-option>
+            <el-option v-for="item in levelData" :key="item.id" :label="item.name" :value="item.id"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="状态">

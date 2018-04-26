@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     getDictList: function () {
-      httpReq.get(api.url_getDictListByEnName, {EnName: 'Submission_Level'}).then(res => {
+      httpReq.get(api.url_getArticleLevelList, {CompanyId: store.state.user.companyId, Status: true}).then(res => {
         this.levelData = res.data;
       })
     },

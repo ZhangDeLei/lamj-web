@@ -36,6 +36,7 @@ import IntegralList from '@/components/custom/integral/IntegralList'
 import IntegralEdit from '@/components/custom/integral/IntegralEdit'
 import IntegralRule from '@/components/custom/integral/IntegralRule'
 import IntegralPerson from '@/components/custom/integral/IntegralPerson'
+import ArticleLevel from '@/components/custom/articleLevel/ArticleLevel'
 
 import store from "../store/store"
 
@@ -127,6 +128,7 @@ const routes = [
         component: IntegralPerson,
         meta: {requireAuth: true}
       },
+      {path: '/articleLevel', name: 'articleLevel', component: ArticleLevel, meta: {requireAuth: true}},
     ]
   }
 ];

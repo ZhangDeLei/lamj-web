@@ -8,21 +8,29 @@ export default {
     return {
       form: {},
       DictData: [],
+      LevelData: [],
       rules: {
         title: [{required: true, message: '请输入标题'}],
         url: [{required: true, message: '请输入文章地址'}],
-        typeId: [{required: true, message: '请选择类型'}]
+        typeId: [{required: true, message: '请选择类型'}],
+        levelId: [{required: true, message: '请选择级别'}]
       }
     }
   },
   mounted() {
     this.getDictList();
     this.updateUI();
+    this.getLevelList();
   },
   watch: {
     "$router": "updateUI"
   },
   methods: {
+    getLevelList: function () {
+      httpReq.get(api.url_getArticleLevelList, {CompanyId: store.state.user.companyId, Status: true}).then(res => {
+        this.LevelData = res.data;
+      })
+    },
     updateUI: function () {
       if (this.$route.params.id) {
         httpReq.get(api.url_getArticleById, {Id: this.$route.params.id}).then(res => {
@@ -60,6 +68,12 @@ export default {
           })
         }
       });
+    },
+    changeLevel: function () {
+      var obj = this.LevelData.filter(t => {
+        return t.id == this.form.levelId;
+      })[0]
+      this.form.levelName = obj.name;
     }
   }
 }

@@ -22,12 +22,12 @@ export default {
       this.form.CurPage = pages;
       this.form.UserId = store.state.user.id;
       httpReq.get(api.url_getIntegralRecordByUserId, this.form).then(res => {
-        this.integralData = res.data;
+        this.integralData = res.data.mPageInfo;
       })
     },
     getDictList: function () {
       httpReq.get(api.url_getDictListByEnName, {EnName: 'Source'}).then(res => {
-        this.sourceList = res.data;
+        this.sourceList = res.data.mPageInfo;
       })
     },
     handleCurrentChange: function (val) {

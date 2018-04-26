@@ -22,7 +22,7 @@
     <el-table
       size="mini"
       class="page-list"
-      :data="integralData.mPageInfo.list">
+      :data="integralData.list">
       <el-table-column label="积分" prop="integral">
         <template slot-scope="scope">
           <label v-if="scope.row.integral>=0" class="green">+{{scope.row.integral}}</label>
@@ -35,9 +35,9 @@
 
     <el-pagination
       class="page"
-      :page-size="integralData.mPageInfo.pageSize"
+      :page-size="integralData.pageSize"
       layout="total, prev, pager, next"
-      :total="integralData.mPageInfo.total"
+      :total="integralData.total"
       @current-change="handleCurrentChange">
     </el-pagination>
   </div>

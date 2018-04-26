@@ -9,14 +9,21 @@ export default {
       articleData: {},
       form: {},
       pageSize: 10,
-      typeData: []
+      typeData: [],
+      LevelData: []
     }
   },
   mounted() {
     this.getData(1)
     this.getDictList();
+    this.getLevelList();
   },
   methods: {
+    getLevelList: function () {
+      httpReq.get(api.url_getArticleLevelList, {CompanyId: store.state.user.companyId, Status: true}).then(res => {
+        this.LevelData = res.data;
+      })
+    },
     getDictList: function () {
       httpReq.get(api.url_getDictListByEnName, {EnName: 'Article_Type'}).then(res => {
         this.typeData = res.data;

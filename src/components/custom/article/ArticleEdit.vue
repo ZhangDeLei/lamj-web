@@ -15,6 +15,11 @@
           <el-option v-for="item in DictData" :key="item.id" :value="item.id" :label="item.label"></el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="级别" prop="levelId">
+        <el-select placeholder="请选择级别" clearable v-model="form.levelId" @change="changeLevel">
+          <el-option v-for="item in LevelData" :key="item.id" :value="item.id" :label="item.name"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">{{form.id?'立即保存':'立即创建'}}</el-button>
         <el-button>取消</el-button>

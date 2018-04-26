@@ -13,6 +13,11 @@
             <el-option v-for="item in typeData" :key="item.id" :label="item.label" :value="item.id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="级别">
+          <el-select v-model="form.LevelId" style="width: 150px;" clearable placeholder="请选择级别">
+            <el-option v-for="item in LevelData" :key="item.id" :label="item.name" :value="item.id"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item class="searchBtn">
           <el-button type="primary" @click="onSearch">查询</el-button>
         </el-form-item>
@@ -23,6 +28,7 @@
       class="page-list"
       :data="articleData.list">
       <el-table-column label="标题" prop="title"/>
+      <el-table-column label="级别" prop="levelName"/>
       <el-table-column label="链接">
         <template slot-scope="scope">
           <a :href="scope.row.url" target="_blank">打开</a>
