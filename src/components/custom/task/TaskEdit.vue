@@ -37,6 +37,7 @@
           </el-form-item>
           <el-form-item label="完成时段" prop="expireDate">
             <el-date-picker
+              value-format="yyyy-MM-dd HH:mm:ss"
               v-model="form.expireDate"
               type="datetime"
               placeholder="选择时间">
