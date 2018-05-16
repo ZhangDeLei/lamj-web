@@ -80,6 +80,7 @@ const api = {
   url_insertTask: 'task/insert',//新增任务
   url_updateTask: 'task/update',//更新任务
   url_getTaskListByUserId: 'task/getTaskListByUserId',//根据用户ID获取任务列表
+  url_getTaskListByNew: 'task/getTaskListByNew',//获取最新的任务列表
   //投稿管理
   url_deleteSubmission: 'submission/delete',//删除投稿
   url_insertSubmission: 'submission/insert',//新增投稿
@@ -118,5 +119,9 @@ const api = {
   url_articleLevelUpdate: 'articleLevel/update',//更新文章级别
   url_articleLevelInsert: 'articleLevel/insert',//新增文章级别
   url_getArticleLevelList: 'articleLevel/getArticleLevelList',//获取文章级别列表
+  //统计报表
+  url_chartIntegral: 'chart/chartIntegral',//统计积分信息
+  url_chartTask: 'chart/chartTask',//统计任务分布
+  url_chartTeam: 'chart/chartTeam',//统计队伍信息
 }
 export default api;
