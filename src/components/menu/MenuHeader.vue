@@ -141,7 +141,7 @@
         <li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">{{NickName}}<span
           class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="login.html">退出</a></li>
+            <li><a href="/">退出</a></li>
           </ul>
         </li>
         <!--<li class="dropdown"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">换肤<span-->
