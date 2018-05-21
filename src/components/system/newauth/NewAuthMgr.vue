@@ -114,8 +114,11 @@
             <el-form-item label="授权编码">
               <el-input v-model="editForm.authCode"></el-input>
             </el-form-item>
-            <el-form-item label="工厂类">
+            <el-form-item label="服务端实现类">
               <el-input v-model="editForm.cls"></el-input>
+            </el-form-item>
+            <el-form-item label="前端实现类">
+              <el-input v-model="editForm.clientCls"></el-input>
             </el-form-item>
             <el-form-item label="操作">
               <el-select v-model="checkOprs" multiple placeholder="请选择">

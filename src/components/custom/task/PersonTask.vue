@@ -60,6 +60,11 @@
       </el-table-column>
       <el-table-column label="站点" prop="newName"/>
       <el-table-column label="执行" prop="execTypeName"/>
+      <el-table-column label="状态">
+        <template slot-scope="scope">
+          {{scope.row.userComplated?scope.row.stageName:'已完成'}}
+        </template>
+      </el-table-column>
       <el-table-column label="操作员" prop="createUserName"/>
       <el-table-column
         label="操作">

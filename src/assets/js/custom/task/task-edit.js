@@ -64,7 +64,7 @@ export default {
       })
     },
     getNewList: function () {
-      httpReq.get(api.url_getAllNewAuthList).then(res => {
+      httpReq.get(api.url_getNewAuthListByCompanyId, {CompanyId: store.state.user.companyId}).then(res => {
         this.newList = res.data;
       })
     },
@@ -136,7 +136,7 @@ export default {
       })
       return list;
     },
-    getArticleTitle:function () {
+    getArticleTitle: function () {
     }
   }
 }
