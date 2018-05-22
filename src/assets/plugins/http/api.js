@@ -1,6 +1,8 @@
 const api = {
-  url_host: 'http://localhost:8080/lamj', //host地址
-  url_local: 'http://localhost:8080/lamj/api/',//api地址
+  url_host: 'http://60.173.247.196:8085/lamj', //host地址
+  url_local: 'http://60.173.247.196:8085/lamj/api/',//api地址
+  // url_host: 'http://192.168.1.139:8080/lamj',
+  // url_local: 'http://192.168.1.139:8080/lamj/api/',
   url_login: 'auth/login',//登录接口
   url_dataMonitor: '/druid',//数据库监控地址
 
