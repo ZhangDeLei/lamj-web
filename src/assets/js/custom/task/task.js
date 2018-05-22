@@ -37,7 +37,6 @@ export default {
       this.form.PageSize = this.pageSize;
       this.form.CurPage = page;
       this.form.CompanyId = store.state.user.companyId;
-      console.log(this.form)
       httpReq.get(api.url_getTaskList, this.form).then(res => {
         this.taskData = res.data;
       })

@@ -55,7 +55,7 @@ const routes = [
     component: Index,
     children: [
       {path: '/', redirect: '/system-main'},
-      {path: '/system-main', name: 'system-main', component: SystemMain, meta: {requireAuth: true}},
+      {path: '/system-main', name: 'system-main', component: SystemMain, meta: {requireAuth: false}},
       {path: '/menu', name: 'menu', component: MenuList, meta: {requireAuth: true}},
       {path: '/menu-add', name: 'menu-add', component: MenuInsert, meta: {requireAuth: true}},
       {path: '/menu-edit/:id', name: 'menu-edit', component: MenuInsert, meta: {requireAuth: true}},
@@ -85,7 +85,7 @@ const routes = [
     component: Index,
     children: [
       {path: '/', redirect: '/custom-main'},
-      {path: '/custom-main', name: 'custom-main', component: CustomMain, meta: {requireAuth: true}},
+      {path: '/custom-main', name: 'custom-main', component: CustomMain, meta: {requireAuth: false}},
       {path: '/team/team-mgr', name: 'team-mgr', component: TeamMgr, meta: {requireAuth: true}},
       {path: '/team/team-user-mgr', name: 'team-user-mgr', component: TeamUserMgr, meta: {requireAuth: true}},
       {path: '/team/team-user-edit', name: 'team-user-edit', component: TeamUserEdit, meta: {requireAuth: true}},

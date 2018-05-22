@@ -86,7 +86,6 @@ export default {
         }
         maxMinList.push(max);
         maxMinList.push(min);
-        console.log(teamList)
         this.initBarCharts(teamList, teamIntegralList, userIntegralList, maxMinList);
       });
     },

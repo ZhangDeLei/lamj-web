@@ -9,14 +9,16 @@ export default new Vuex.Store({
       get id() {
         return localStorage.getItem('id')
       },
-      get companyId(){
+      get companyId() {
         return localStorage.getItem('companyId')
       },
-      get nickName(){
+      get nickName() {
         return localStorage.getItem('nickName')
       }
     },
-    token: localStorage.getItem('token'),
+    get token() {
+      return localStorage.getItem('token');
+    },
     title: ''
   },
   mutations: {
