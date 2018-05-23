@@ -4,25 +4,31 @@
       <div class="col-sm-4">
         <div class="cpanel">
           <div class="title">
-            <span class="name">队伍架构</span>
+            <span class="name">企业数</span>
           </div>
-          <div class="cont"></div>
+          <div class="cont">
+            <label>{{total.companyTotal}}</label>
+          </div>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="cpanel">
           <div class="title">
-            <span class="name">网军任务</span>
+            <span class="name">用户数</span>
           </div>
-          <div class="cont"></div>
+          <div class="cont">
+            <label>{{total.userTotal}}</label>
+          </div>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="cpanel">
           <div class="title">
-            <span class="name">网评情况</span>
+            <span class="name">任务数</span>
           </div>
-          <div class="cont"></div>
+          <div class="cont">
+            <label>{{total.taskTotal}}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -31,61 +37,27 @@
         <span class="name" style="color: red">将要到期企业</span>
       </div>
       <div class="cont">
-        <table class="table">
-          <tr style="cursor: pointer">
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
+        <table class="etable">
+          <thead>
+            <tr>
+              <td>到期时间</td>
+              <td>最大人数</td>
+              <td>企业名称</td>
+              <td>地址</td>
+              <td>联系人</td>
+              <td>联系号码</td>
+            </tr>
+          </thead>
+          <tbody>
+          <tr style="cursor: pointer" v-for="item in companyData">
+            <td style="color: red">{{item.expiredDate}}</td>
+            <td>{{item.maxNumUser}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.concatUserName}}</td>
+            <td>{{item.concatUserPhone}}</td>
           </tr>
-          <tr>
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2018-01-01</td>
-            <td><span class="badge" style="background: #00c1de;">42</span></td>
-            <td><span class="badge" style="background: red">42</span></td>
-            <td>寒门博士之死，村里学历最高的年轻人</td>
-            <td>网易新闻</td>
-            <td>评论</td>
-            <td>1</td>
-          </tr>
+          </tbody>
         </table>
       </div>
     </div>

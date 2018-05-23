@@ -2,3 +2,7 @@
 .org{margin-left: 5px;margin-right: 5px;height: 50%;}
 .org>div,.org .cpanel{height: 100%;}
 .task{margin-left: 20px;margin-right: 20px; margin-top: 10px;position: absolute;bottom: 10px;top:50%;right: 10px;left: 10px;}
+.cont{overflow-y: auto;position: absolute;top:0px;bottom: 10px;}
+.etable{width: 100%;}
+.etable td{height: 30px;}
+.cont label{width: 100%;text-align: center;position: absolute;top:50%;transform: translateY(-50%);left: -0%;font-size: 100px;}

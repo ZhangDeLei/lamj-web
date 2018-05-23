@@ -53,6 +53,7 @@
           <el-button-group>
             <el-button size="mini" round type="danger" @click="confirmDelete(scope.row.id)"
                        icon="el-icon-delete"></el-button>
+            <el-button icon="el-icon-download" round size="mini" type="success" @click="openDoc(scope.row)"></el-button>
             <el-button size="mini" round type="primary" @click="showEditDialog(scope.row)"
                        icon="el-icon-edit-outline"></el-button>
           </el-button-group>

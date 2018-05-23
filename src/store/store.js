@@ -14,6 +14,9 @@ export default new Vuex.Store({
       },
       get nickName() {
         return localStorage.getItem('nickName')
+      },
+      get typeCode() {
+        return localStorage.getItem('typeCode')
       }
     },
     get token() {
@@ -27,6 +30,7 @@ export default new Vuex.Store({
       localStorage.setItem('id', data.user.id)
       localStorage.setItem('companyId', data.user.companyId)
       localStorage.setItem('nickName', data.user.nickName)
+      localStorage.setItem('typeCode', data.user.typeCode)
     },
     [types.LOGOUT]: (state) => {
       localStorage.removeItem('token');

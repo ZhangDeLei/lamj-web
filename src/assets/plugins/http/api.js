@@ -53,6 +53,7 @@ const api = {
   url_deleteCompany: 'company/delete',//删除企业
   url_insertCompanyNew: 'company/insertCompanyNew',//新增企业新闻客户端
   url_deleteCompanyNewByCompanyIdAndNewId: 'company/deleteCompanyNewByCompanyIdAndNewId',//根据企业ID和客户端ID删除新闻与企业的关联关系
+  url_getCompanyByExpired: 'company/getCompanyByExpired',//获取快要超过有效期的企业（前10）
   //企业队伍管理
   url_getTeamListByCompanyId: 'team/getTeamListByCompanyId',//根据企业ID获取企业的队伍列表
   url_getTeamList: 'team/getTeamList',//分页查询队伍列表
@@ -110,7 +111,8 @@ const api = {
   url_reduce: 'integralRecord/reduce',//核减积分
   //应用管理
   url_deleteApp: 'appManager/delete',//删除应用记录
-  url_getAppByNew: 'appManager/getAppByNew',//获取最新的APP信息
+  url_getAppByNewForAndroid: 'appManager/getAppByNewForAndroid',//获取最新的APP信息（Android）
+  url_getAppByNewForiOS: 'appManager/getAppByNewForiOS',//获取最新的APP信息（IOS）
   url_getAppList: 'appManager/getAppList',//获取APP应用列表
   url_insertApp: 'appManager/insert',//新增应用记录
   url_updateApp: 'appManager/update',//更新应用记录
@@ -125,5 +127,6 @@ const api = {
   url_chartIntegral: 'chart/chartIntegral',//统计积分信息
   url_chartTask: 'chart/chartTask',//统计任务分布
   url_chartTeam: 'chart/chartTeam',//统计队伍信息
+  url_chartSystemMainTotal: 'chart/chartSystemMainTotal'//统计信息
 }
 export default api;

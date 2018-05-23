@@ -126,6 +126,9 @@ export default {
     },
     removeFile: function () {
       this.appFile = {};
+    },
+    openDoc: function (obj) {
+      window.location.href = api.url_host + obj.url
     }
   }
 }

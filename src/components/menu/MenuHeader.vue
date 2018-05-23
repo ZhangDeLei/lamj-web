@@ -10,6 +10,12 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="li-border nav-title" @click="gotoMain">网评管理系统</li>
+        <li class="dropdown li-border">
+          <a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">网评APP下载<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a :href="androidPath">Android</a></li>
+          </ul>
+        </li>
         <!--<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color"-->
                                           <!--data-toggle="dropdown">产品与服务<span-->
           <!--class="caret"></span></a>-->
