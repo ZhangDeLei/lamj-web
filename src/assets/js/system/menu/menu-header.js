@@ -13,7 +13,7 @@ export default {
   },
   mounted() {
     this.getAndroidDown();
-    this.getiOSDown();
+    // this.getiOSDown();
   },
   methods: {
     gotoMain: function () {

@@ -127,6 +127,11 @@ const api = {
   url_chartIntegral: 'chart/chartIntegral',//统计积分信息
   url_chartTask: 'chart/chartTask',//统计任务分布
   url_chartTeam: 'chart/chartTeam',//统计队伍信息
-  url_chartSystemMainTotal: 'chart/chartSystemMainTotal'//统计信息
+  url_chartSystemMainTotal: 'chart/chartSystemMainTotal',//统计信息
+  //评价管理
+  url_getUserCommentList: 'userComment/getUserCommentList',//获取任务评价列表
+  url_insertUserComment: 'userComment/insertUserComment',//新增任务评价
+  url_deleteUserComment: 'userComment/deleteUserComment',//删除任务评价
+  url_updateUserComment: 'userComment/updateUserComment'//更新任务评价
 }
 export default api;

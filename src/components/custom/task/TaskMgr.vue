@@ -58,18 +58,21 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="任务名称"
-        prop="title">
+        label="任务名称">
+        <template slot-scope="scope">
+          <a :href="scope.row.url" target="_blank">{{scope.row.title}}</a>
+        </template>
       </el-table-column>
       <el-table-column label="站点" prop="newName"/>
       <el-table-column label="执行" prop="execTypeName"/>
       <el-table-column label="操作员" prop="createUserName"/>
+      <el-table-column label="任务状态" prop="stageName"></el-table-column>
       <el-table-column
         label="操作">
         <template slot-scope="scope">
           <el-button-group>
             <el-button round icon="el-icon-delete" type="danger" @click="commitDelete(scope.row.id)" size="mini"/>
-            <el-button round icon="el-icon-document" @click="openPage(scope.row.url)" type="success" size="mini"/>
+            <el-button round icon="el-icon-search" @click="openTaskCommen(scope.row)" type="success" size="mini"/>
             <el-button round icon="el-icon-edit-outline" @click="openEditPage(scope.row.id)" type="primary"
                        size="mini"/>
           </el-button-group>
@@ -85,6 +88,39 @@
       :total="taskData.total"
       @current-change="getData">
     </el-pagination>
+
+    <el-dialog title="评论列表" :visible.sync="dialogCommentShow" :modal-append-to-body="false">
+      <div>
+
+        <el-table
+          size="mini"
+          :data="commentData.list">
+          <el-table-column label="评论时间" prop="createTime"></el-table-column>
+          <el-table-column label="评论人" prop="nickName"></el-table-column>
+          <el-table-column label="内容" prop="content"></el-table-column>
+          <el-table-column label="截图">
+            <template slot-scope="scope">
+              <img :src="host+scope.row.imageUrl" style="width:40px;height: 40px;" @click="mouseOver(scope.row)"/>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination
+          :page-size="commentData.pageSize"
+          layout="total, prev, pager, next"
+          :total="commentData.total"
+          @current-change="commentData">
+        </el-pagination>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogCommentShow = false">关闭</el-button>
+        <el-button type="primary" @click="confirmEdit">完成任务</el-button>
+      </span>
+    </el-dialog>
+
+    <div style="position: absolute;width: 100%;height: 100%;text-align: center; z-index: 99999" v-if="showImage">
+      <div style="position: absolute;width: 100%;height: 100%;background: black;opacity: 0.5;" @click="mouseOut()"></div>
+      <img :src="curUrl" style="position: absolute;left: 50%;transform: translateX(-50%)" />
+    </div>
   </div>
 </template>
 

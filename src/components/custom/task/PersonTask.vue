@@ -43,12 +43,7 @@
     <el-table
       size="mini"
       :data="taskData.list"
-      class="page-list"
-      @selection-change="handleSelectionChange">
-      <el-table-column
-        type="selection"
-        width="55">
-      </el-table-column>
+      class="page-list">
       <el-table-column label="日期">
         <template slot-scope="scope">
           {{getTime(scope.row.createDate)}}
@@ -71,8 +66,8 @@
         <template slot-scope="scope">
           <el-button-group>
             <el-button round icon="el-icon-document" @click="openPage(scope.row.url)" type="success" size="mini"/>
-            <el-button round icon="el-icon-circle-check-outline" type="primary"
-                       size="mini"/>
+            <el-button round icon="el-icon-circle-check-outline" type="primary" size="mini"
+                       @click="showConfirmDialog(scope.row)"/>
           </el-button-group>
         </template>
       </el-table-column>
@@ -85,6 +80,41 @@
       :total="taskData.total"
       @current-change="getData">
     </el-pagination>
+
+    <el-dialog title="完成任务" :visible.sync="dialogEditShow" :modal-append-to-body="false">
+      <el-form ref="editForm" :model="editForm" size="mini" label-width="100px">
+        <el-form-item label="标题">
+          {{taskInfo.title}}
+        </el-form-item>
+        <el-form-item label="站点">
+          {{taskInfo.newName}}
+        </el-form-item>
+        <el-form-item label="任务地址">
+          <a :href="taskInfo.url" target="_blank">{{taskInfo.url}}</a>
+        </el-form-item>
+        <el-form-item label="状态">
+          {{taskInfo.userComplated?taskInfo.stageName:'已完成'}}
+        </el-form-item>
+        <el-form-item label="图片" v-if="!taskInfo.userComplated">
+          <img :src="taskInfo.imageUrl" style="width: 200px;height: 200px;" @mouseover="mouseOver()" @mouseout="mouseOut()"/>
+          <img :src="taskInfo.imageUrl" style="position: absolute;top:-200px;left:-0px;transform: scale(0.5,0.5)" v-if="imageShow"/>
+        </el-form-item>
+        <el-form-item label="选择图片" v-if="taskInfo.userComplated">
+          <div>
+            <label class="selectImage" for="articleFile">选择文件</label>
+            <input type="file" id="articleFile" @change="changeFile"/>
+            <span class="tip">只能上传png/jpg/jpeg文件</span>
+          </div>
+          <div class="fileinfo" v-if="taskFile.name">
+            {{taskFile.name}}<i class="el-icon-circle-close-outline" @click="removeFile"></i>
+          </div>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer" v-if="taskInfo.userComplated">
+        <el-button @click="dialogEditShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirmEdit">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 

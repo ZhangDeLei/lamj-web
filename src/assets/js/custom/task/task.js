@@ -11,7 +11,13 @@ export default {
       pageSize: 10,
       multipleSelection: [],
       newData: [],
-      stageData: []
+      stageData: [],
+      dialogCommentShow: false,
+      commentData: {},
+      curTaskId: 0,
+      host: api.url_host,
+      showImage: false,
+      curUrl: ''
     }
   },
   mounted() {
@@ -44,8 +50,11 @@ export default {
     onSearch: function () {
       this.getData(1);
     },
-    openPage: function (url) {
-      window.open(url);
+    //开大任务评论弹框
+    openTaskCommen: function (obj) {
+      this.dialogCommentShow = true;
+      this.curTaskId = obj.id;
+      this.getTaskComments(1);
     },
     openEditPage: function (id) {
       this.$router.push({name: 'task-edit', params: {id: id}, query: {name: '编辑任务'}})
@@ -80,6 +89,25 @@ export default {
           }
         })
       }
+    },
+    //获取任务评价列表
+    getTaskComments: function (curPage) {
+      let params = {CompanyId: store.state.user.companyId, TaskId: this.curTaskId, PageSize: 10, CurPage: curPage};
+      httpReq.get(api.url_getUserCommentList, params).then(res => {
+        this.commentData = res.data;
+      });
+    },
+    //完成任务
+    confirmEdit: function () {
+
+    },
+    mouseOver: function (obj) {
+      this.showImage = true;
+      this.curUrl = api.url_host + obj.imageUrl;
+    },
+    mouseOut: function () {
+      this.showImage = false;
+      this.curUrl = '';
     }
   }
 }
